@@ -79,11 +79,7 @@
             <i class="nav-icon fas fa-chart-line"></i>
             <p>Dashboard</p></a>
           </li>
-          <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-info"></i>
-            <p>Baranagay Info</p></a>
-          </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-clipboard"></i>
@@ -147,8 +143,23 @@
             <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
-              
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-friends ml-3"></i>
+                <p>Disaster Notification</p></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-friends ml-3"></i>
+                <p>Notification for Meeting</p></a>
+              </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+          <a href="{{route('brgy.info')}}" class="nav-link">
+            <i class="nav-icon fas fa-info"></i>
+            <p>Baranagay Info</p></a>
           </li>
 
           <hr>
@@ -229,16 +240,6 @@
 <script src="{{ asset('vendor/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/dist/js/adminlte.min.js') }}"></script>
-
-<script>
-  //Initialize Select2 Elements
-  $('.select2').select2()
-
-  //Initialize Select2 Elements
-  $('.select2bs4').select2({
-    theme: 'bootstrap4'
-  })
-</script>
 
 <script>
   $(function () {
