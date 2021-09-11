@@ -3,7 +3,7 @@
 <div class="container-fluid">
 <div class="row">
           <!-- Left col -->
-          <section class="col-lg-8 connectedSortable ui-sortable">
+          <section class="col-lg-7 connectedSortable ui-sortable">
             <div class="card card-info card-outline">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-cogs"></i> Setting</h3>
@@ -12,30 +12,30 @@
               <div class="card-body">
                 <lable>Barangay :</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Input Barangay">
+                  <input type="text" class="inp form-control" placeholder="Input Barangay">
                 </div>
                 
                 <lable>Municipality :</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Input Municipality">
+                  <input type="text" class="inp form-control" placeholder="Input Municipality">
                 </div>
 
                 <lable>Province :</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Input Province">
+                  <input type="text" class="inp form-control" placeholder="Input Province">
                 </div>
 
                 <lable>Contact Number :</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Input Contact Number">
+                  <input type="text" class="inp form-control" placeholder="Input Contact Number">
                 </div>
 
                 <lable for="email">Email Address :</label>
                 <div class="input-group mb-3">
-                  <input id="email" type="email" class="form-control" placeholder="Input Email Address">
+                  <input id="email" type="email" class="inp form-control" placeholder="Input Email Address">
                 </div>
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <button type="submit" class="btn btn-primary btn-block">
                             Save
                         </button>
@@ -48,7 +48,7 @@
           <!-- /.Left col -->
             
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-4 connectedSortable ui-sortable">
+          <section class="col-lg-5 connectedSortable ui-sortable">
             <div class="card card-primary card-outline">
               <div class="card-header mx-auto">
                 <img src="../../../images/brgy.jpg" height="150" class=" brand-image img-circle elevation-3" style="opacity: .8">
@@ -57,35 +57,31 @@
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">Barangay</label> 
                     <div class="col-md-6">
-                        <p class="form-control">Barangay Name</p>
+                        <p class="form-control border-0">Barangay Name</p>
                     </div>
                 </div>
-                <hr>
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">Municipality</label> 
                     <div class="col-md-6">
-                        <p class="form-control">Barangay Name</p>
+                        <p class="form-control border-0">Barangay Name</p>
                     </div>
                 </div>
-                <hr>
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">Province</label> 
                     <div class="col-md-6">
-                        <p class="form-control">Bulan Sorsogon</p>
+                        <p class="form-control border-0">Bulan Sorsogon</p>
                     </div>
                 </div>
-                <hr>
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">Contact Number</label> 
                     <div class="col-md-6">
-                        <p class="form-control">0920412312</p>
+                        <p class="form-control border-0">0920412312</p>
                     </div>
                 </div>
-                <hr>
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label> 
                     <div class="col-md-6">
-                        <p class="form-control">Email</p>
+                        <p class="form-control border-0">Email</p>
                     </div>
                 </div>
               </div>

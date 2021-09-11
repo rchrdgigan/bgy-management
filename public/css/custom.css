@@ -1,0 +1,15 @@
+.inp {
+    border:none;
+    border-bottom: 1px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;
+ }
+ .inp:focus {
+    border-color: green
+  }
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.3s 0.3s ease; 
+    text-indent: -100%;
+    opacity: 1;
+ }

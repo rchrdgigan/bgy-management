@@ -7,7 +7,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                <h3>30</h3>
+                <h3>0</h3>
 
                 <p>Barangay Officials</p>
                 </div>
@@ -22,7 +22,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>4203</h3>
+                <h3>0</h3>
 
                 <p>Residents</p>
               </div>
@@ -37,7 +37,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>0</h3>
 
                 <p>Certificates</p>
               </div>
@@ -52,7 +52,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>53</h3>
+                <h3>0</h3>
 
                 <p>Blotters</p>
               </div>

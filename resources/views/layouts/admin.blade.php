@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{ asset('vendor/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
+  <!-- Mysytle style -->
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -108,20 +110,14 @@
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-friends ml-3"></i>
-                <p>List of Officials</p></a>
+                  <i class="nav-icon fas fa-user ml-3"></i>
+                  <p>Add New Resident</p></a>
               </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-plus"></i>
-              <p>Blotter Record</p>
-            <i class="nav-icon fas fa-angle-left right"></i>
-            </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user-friends ml-3"></i>
+                  <p>List of Residents</p></a>
+              </li>
             </ul>
           </li>
 
@@ -132,7 +128,31 @@
             <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
-              
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user ml-3"></i>
+                  <p>Issue Certificate</p></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-certificate ml-3"></i>
+                  <p>List of Certificate</p></a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-plus"></i>
+              <p>Blotter Record</p>
+            <i class="nav-icon fas fa-angle-left right"></i>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user-slash ml-3"></i>
+                  <p>List of Records</p></a>
+              </li>
             </ul>
           </li>
 
@@ -151,7 +171,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-friends ml-3"></i>
-                <p>Notification for Meeting</p></a>
+                <p>Meeting Notification</p></a>
               </li>
             </ul>
           </li>
