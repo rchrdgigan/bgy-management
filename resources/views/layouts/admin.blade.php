@@ -23,7 +23,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-primary navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -54,7 +54,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="images/brgy.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -90,12 +90,12 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('brgy.official')}}" class="nav-link">
                 <i class="nav-icon fas fa-user-friends ml-3"></i>
                 <p>List of Officials</p></a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('brgy.manage-offcials')}}" class="nav-link">
                 <i class="nav-icon fas fa-users-cog ml-3"></i>
                 <p>Manage Officials</p></a>
               </li>
@@ -109,7 +109,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('add.residents')}}" class="nav-link">
                   <i class="nav-icon fas fa-user ml-3"></i>
                   <p>Add New Resident</p></a>
               </li>
