@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body style="background-image: url('images/bgframe.png'); background-repeat: no-repeat; background-attachment: fixed;
   background-size: cover;">
     <div id="app">

@@ -51,7 +51,7 @@
           <section class="col-lg-4 connectedSortable ui-sortable">
             <div class="card card-primary card-outline">
               <div class="card-header mx-auto">
-                <img src="../../../images/brgy.jpg" height="150" class=" brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('images/brgy.jpg')}}" height="150" class=" brand-image img-circle elevation-3" style="opacity: .8">
               </div>
               <div class="card-body">
                 <div class="form-group row">

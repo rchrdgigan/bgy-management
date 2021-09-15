@@ -10,7 +10,7 @@
             </div>
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="../../../images/brgy.jpg" alt="User profile picture">
+                    <img class="brand-image img-circle elevation-3" height="200" src="{{ asset('images/no-picture.png')}}">
                 </div>
 
                 <h3 class="profile-username text-center">Captain Marvells</h3>
@@ -54,7 +54,7 @@
             <div class="card-body">
                 <div class="row">
 
-                    <div class="col-md-4">
+                <div class="col-md-4">
                         <!-- Widget: user widget style 1 -->
                         <div class="card card-widget widget-user">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -63,7 +63,7 @@
                                 <h5 class="widget-user-desc">Secretary</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../../../images/brgy.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="{{ asset('images/no-picture.png')}}" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -86,7 +86,13 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                     <h5 class="description-header">View</h5>
-                                    <i class="far fa-eye"></i>
+                                    <a class="btn btn-primary .btn-sm"
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-toggle="modal" 
+                                        data-target="#showModal">
+                                        <i class="fas fa-eye"></i>
+                                    </a> 
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -107,7 +113,7 @@
                                 <h5 class="widget-user-desc">Secretary</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../../../images/brgy.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="{{ asset('images/no-picture.png')}}" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -130,7 +136,13 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                     <h5 class="description-header">View</h5>
-                                    <i class="far fa-eye"></i>
+                                    <a class="btn btn-primary .btn-sm"
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-toggle="modal" 
+                                        data-target="#showModal">
+                                        <i class="fas fa-eye"></i>
+                                    </a> 
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -151,7 +163,7 @@
                                 <h5 class="widget-user-desc">Secretary</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../../../images/brgy.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="{{ asset('images/no-picture.png')}}" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -174,7 +186,13 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                     <h5 class="description-header">View</h5>
-                                    <i class="far fa-eye"></i>
+                                    <a class="btn btn-primary .btn-sm"
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-toggle="modal" 
+                                        data-target="#showModal">
+                                        <i class="fas fa-eye"></i>
+                                    </a> 
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -196,7 +214,7 @@
                                 <h5 class="widget-user-desc">Secretary</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="../../../images/brgy.jpg" alt="User Avatar">
+                                <img class="img-circle elevation-2" src="{{ asset('images/no-picture.png')}}" alt="User Avatar">
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -219,7 +237,13 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                     <h5 class="description-header">View</h5>
-                                    <i class="far fa-eye"></i>
+                                    <a class="btn btn-primary .btn-sm"
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-toggle="modal" 
+                                        data-target="#showModal">
+                                        <i class="fas fa-eye"></i>
+                                    </a> 
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -239,6 +263,25 @@
         </div>
         </section>
 
+    </div>
+</div>
+
+<!-- Modal SHOW Brgy Official -->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-information">
+            <h5 class="modal-title" id="exampleModalLabel">Brgy. Official Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container p-3">
+                    .....Maintenance
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

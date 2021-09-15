@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     
 Auth::routes();
 
-Route::get('/admin', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
@@ -29,5 +29,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('add/residents', function () {
             return view('add-residents');
         })->name('add.residents');
+
+        Route::get('list/residents', function () {
+            return view('list-residents');
+        })->name('list.residents');
+
+        Route::get('resident/profile', function () {
+            return view('resident-profile');
+        })->name('resident.profile');
     });
 });

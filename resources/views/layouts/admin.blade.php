@@ -56,8 +56,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="images/brgy.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="{{route('home')}}" class="brand-link">
+      <img src="{{ asset('images/brgy.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">BAMSystem</span>
     </a>
 
@@ -66,10 +66,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="images/admin.png" class="img-circle elevation-2">
+          <img src="{{ asset('images/admin.png')}}" class="img-circle elevation-2">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          <a href="" class="d-block">{{auth()->user()->name}}</a>
+          <span href="" class="d-block text-center">Secretary</span>
         </div>
       </div>
 
@@ -83,7 +84,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon far fa-clipboard"></i>
               <p>Baranagay Officials</p>
               <i class="nav-icon fas fa-angle-left right"></i>
@@ -102,7 +103,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Residents</p>
             <i class="nav-icon fas fa-angle-left right"></i>
@@ -114,7 +115,7 @@
                   <p>Add New Resident</p></a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('list.residents')}}" class="nav-link">
                   <i class="nav-icon fas fa-user-friends ml-3"></i>
                   <p>List of Residents</p></a>
               </li>
@@ -122,7 +123,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>Certification</p>
             <i class="nav-icon fas fa-angle-left right"></i>
@@ -142,7 +143,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>Blotter Record</p>
             <i class="nav-icon fas fa-angle-left right"></i>
@@ -157,7 +158,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-envelope-open-text"></i>
               <p>SMS Notification</p>
             <i class="nav-icon fas fa-angle-left right"></i>

@@ -17,7 +17,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
 </head>
-<body class="hold-transition login-page"  style="background-image: url('images/bgframe.png'); background-repeat: no-repeat; background-attachment: fixed;
+<marquee class="bg-primary" style="width:100%; top:0; position: absolute;">
+
+  <em>Barangay Benigno S. Aquino Bulan Sorsogon</em> 
+  &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
+
+  <em>Punong Brgy. Catain Marvells</em>
+  &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <em>Kalihim ng Brgy. Sandy Santiago</em>
+  &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+
+</marquee>
+<body class="hold-transition login-page"  style="background-image: url({{ asset('images/bgframe.png')}}); background-repeat: no-repeat; background-attachment: fixed;
   background-size: cover;">
 @yield('content')
 </body>

@@ -92,7 +92,7 @@
             <tbody>
             <tr>
                 <td hidden="">1</td>
-                <td><img src="#" width="100" hight="100" class="img-circle"></td>
+                <td><img src="{{ asset('images/no-picture.png')}}" height="30" class="brand-image img-circle elevation-3"></td>
                 <td>Polano Ba</td>
                 <td>Kagawad</td>
                 <td>Sept 02, 2021 - Sept 02, 2022</td>

@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
+    <form action="" method="post">
+    @csrf
     <div class="row">
+    
         <!-- Left col -->
         <section class="col-lg-3 connectedSortable ui-sortable">
         <div class="card card-primary card-outline">
@@ -10,7 +13,7 @@
             </div>
             <div class="card-body box-profile">
                 <div class="text-center mb-2">
-                    <img class="profile-user-img img-fluid img-circle" src="../../../images/brgy.jpg" alt="User profile picture">
+                    <img class="brand-image img-circle elevation-3" height="200" src="{{ asset('images/no-picture.png')}}">
                 </div>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -39,30 +42,38 @@
             </div>
             <div class="card-body">
 
-                <form>
+               
                 <div class="row">
                     <div class="col-md-6">
-                        <lable>First Name :</label>
+                        <label for="fname">First Name :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input First Name" required="">
+                        <input type="text" id="fname" name="fname" 
+                                class="inp form-control" 
+                                placeholder="Input First Name" required="">
                         </div>
                         
-                        <lable>Middle Name :</label>
+                        <label for="mname">Middle Name :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Middle Name" required="">
+                        <input type="text" id="mname" name="mname" 
+                                class="inp form-control" 
+                                placeholder="Input Middle Name" required="">
                         </div>
 
-                        <lable>Last Name :</label>
+                        <label for="lname">Last Name :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Last Name" required="">
+                        <input type="text" id="lname" name="lname" 
+                                class="inp form-control" 
+                                placeholder="Input Last Name" required="">
                         </div>
 
-                        <lable>Nick Name :</label>
+                        <label for="nickname">Nick Name :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Nick Name" required="">
+                        <input type="text" id="nickname" name="nickname" 
+                                class="inp form-control" 
+                                placeholder="Input Nick Name" required="">
                         </div>
 
-                        <lable>Gender :</label>
+                        <label for="">Gender :</label>
                         <div class="input-group">
                             <div class="form-check ml-5 p-3">
                                 <input id="male" class="form-check-input" type="radio" value="Male" name="gender" required="">
@@ -74,74 +85,101 @@
                             </div>
                         </div>
 
-                        <lable for="civil_status">Civil Status :</label>
+                        <label for="civil_status">Civil Status :</label>
                         <div class="input-group mb-3">
-                        <select name="civil_status" id="civil_status" class="inp form-control select2 select2-hidden-accessible" style="width: 100%;" aria-hidden="true" required="">
+                        <select name="civil_status" id="civil_status" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
                             <option value="Single">Single</option>
-                            <option value="Single">Married</option>
-                            <option value="Single">Widowed</option>
+                            <option value="Married">Married</option>
+                            <option value="Widowed">Widowed</option>
                         </select>
                         </div>
 
-                        <lable for="">Age :</label>
+                        <label for="age">Age :</label>
                         <div class="input-group mb-3">
-                        <input type="number" class="inp form-control" placeholder="Input Age" required="">
+                        <input type="number" id="age" name="age" 
+                                class="inp form-control" 
+                                placeholder="Input Age" required="">
                         </div>
                         
-                        <lable for="">Birth Date :</label>
+                        <label for="birthdate">Birth Date :</label>
                         <div class="input-group mb-3">
-                        <input type="date" class="inp form-control" placeholder="Input Birth Date" required="">
+                        <input type="date" id="birthdate" name="birthdate" 
+                                class="inp form-control" 
+                                placeholder="Input Birth Date" required="">
                         </div>
 
-                        <lable for="">Birth Place :</label>
+                        <label for="bplace">Birth Place :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Birth Place" required="">
+                        <input type="text" id="bplace" name="bplace" 
+                                class="inp form-control" 
+                                placeholder="Input Birth Place" required="">
                         </div>
                     </div>
+
                     <div class="col-md-6">
-                        <lable for="">Contact Number :</label>
-                        <div class="input-group mb-3">
-                        <input type="number" class="inp form-control" placeholder="Input Contact Number" required="">
+                        <div class="form-group">
+                        <label for="contact_number">Contact Number :</label>
+                            <div class="input-group mb-3">
+                                <input type="text" id="contact_number" name="contact_number" 
+                                        class="inp form-control" maxlength="11"  
+                                        placeholder="Input Contact Number" required="" />
+                            </div>
                         </div>
 
-                        <lable>Email Addres :</label>
+                        <label for="email">Email Address :</label>
                         <div class="input-group mb-3">
-                        <input type="email" class="inp form-control" placeholder="Input Email Addres" required="">
+                        <input type="email"  id="email" name="email" 
+                                class="inp form-control" 
+                                placeholder="Input Email Address" required="">
                         </div>
                         
-                        <lable>Street :</label>
+                        <label for="street">Street :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Street" required="">
+                            <input type="text" id="street" name="street" 
+                                    class="inp form-control" 
+                                    placeholder="Input Street" required="">
                         </div>
 
-                        <lable>Purok/Area :</label>
+                        <label for="purok">Purok/Area :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Purok/Area" required="">
+                        <input type="text" id="purok" name="purok" 
+                                class="inp form-control" 
+                                placeholder="Input Purok/Area" required="">
                         </div>
 
-                        <lable>Citizenship :</label>
+                        <label for="citizenship">Citizenship :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Citizenship" required="">
+                        <input type="text" id="citizenship" name="citizenship" 
+                                class="inp form-control" 
+                                placeholder="Input Citizenship" required="">
                         </div>
 
-                        <lable for="">Defferently Disabled Person :</label>
+                        <label for="disabled_person">Defferently Disabled Person :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Defferently Disabled Person" required="">
+                        <input type="text" id="disabled_person" name="disabled_person" 
+                                class="inp form-control" 
+                                placeholder="Input Defferently Disabled Person" required="">
                         </div>
 
-                        <lable for="">Religion :</label>
+                        <label for="religion">Religion :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Religion" required="">
+                        <input type="text" id="religion" name="religion" 
+                                class="inp form-control" 
+                                placeholder="Input Religion" required="">
                         </div>
 
-                        <lable for="">Occupation :</label>
+                        <label for="occupation">Occupation :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Occupation" required="">
+                        <input type="text" id="occupation" name="occupation" 
+                                class="inp form-control" 
+                                placeholder="Input Occupation" required="">
                         </div>
 
-                        <lable for="">Status :</label>
+                        <label for="status">Status :</label>
                         <div class="input-group mb-3">
-                        <input type="text" class="inp form-control" placeholder="Input Status" required="">
+                        <input type="text" id="status" name="status" 
+                                 class="inp form-control" 
+                                 placeholder="Input Status ex: Alive or Deceased" required="">
                         </div>
                     </div>
                 </div>
@@ -152,12 +190,12 @@
                         </button>
                     </div>
                 </div>
-                </form>
               </div>
               <!-- /.card-body -->
         </div>
         </section>
         <!-- right col -->
     </div>
+    </form>
 </div>
 @endsection
