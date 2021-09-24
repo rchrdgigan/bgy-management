@@ -26,19 +26,20 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($resident as $data)
             <tr>
-                <td hidden="">1</td>
-                <td><img src="{{ asset('images/no-picture.png')}}" height="30" class="brand-image img-circle elevation-3"></td>
-                <td><a class="p-1 bg-success rounded">Alive</a></td>
-                <td>RPG Ba</td>
-                <td>Male</td>
-                <td>Purok 5</td>
-                <td>Ambot Street</td>
+                <td hidden="">{{$data->id}}</td>
+                <td><img src="/storage/resident_image/{{$data->image}}" height="30" class="brand-image img-circle elevation-3"></td>
+                <td><a class="p-1 bg-success rounded">{{$data->status}}</a></td>
+                <td>{{$data->fname }}{{$data->mname }}{{$data->lname }}</td>
+                <td>{{$data->gender}}</td>
+                <td>{{$data->purok}}</td>
+                <td>{{$data->street}}</td>
                 <td>
                   <form action="" method="post">
                   @csrf
                   @method('DELETE')
-                    <a href="{{route('resident.profile')}}" class="btn btn-primary .btn-sm">
+                    <a href="{{route('resident.profile',$data->id)}}" class="btn btn-primary .btn-sm">
                         <i class="fas fa-eye"></i>
                     </a>
                     <button type="submit" class="btn btn-danger .btn-sm">
@@ -50,6 +51,8 @@
                   </form>
                 </td>
             </tr>
+            @endforeach
+
             </tbody>
         </table>
         </div>

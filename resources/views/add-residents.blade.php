@@ -1,10 +1,18 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
-    <form action="" method="post">
+    @if(session('message'))
+    <div class="alert alert-success alert-dismissible">
+        {{ session('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <form action="{{route('add.residents')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
-    
+       
         <!-- Left col -->
         <section class="col-lg-3 connectedSortable ui-sortable">
         <div class="card card-primary card-outline">
@@ -12,8 +20,9 @@
                 <h3 class="card-title"><i class="fas fa-user"></i> Profile Picture</h3>
             </div>
             <div class="card-body box-profile">
+            <div class="profile-pic">
                 <div class="text-center mb-2">
-                    <img class="brand-image img-circle elevation-3" height="200" src="{{ asset('images/no-picture.png')}}">
+                    <img class="brand-image img-circle elevation-3" height="200" width="200" src="{{ asset('images/no-picture.png')}}"  id="output">
                 </div>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -21,13 +30,14 @@
                             <label for="exampleInputFile">Upload Photo</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    <input id="file" type="file" name="image" class="custom-file-input" onchange="loadFile(event)"/>
+                                    <label class="custom-file-label" for="file">Choose file</label>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
+            </div>
             </div>
             <!-- /.card-body -->
         </div>
@@ -130,7 +140,7 @@
                         <div class="input-group mb-3">
                         <input type="email"  id="email" name="email" 
                                 class="inp form-control" 
-                                placeholder="Input Email Address" required="">
+                                placeholder="Input Email Address">
                         </div>
                         
                         <label for="street">Street :</label>

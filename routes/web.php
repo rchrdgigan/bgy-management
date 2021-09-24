@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     HomeController,
+    ResidentController
 };
     
 Auth::routes();
@@ -26,16 +27,14 @@ Route::group(['middleware' => 'auth'], function () {
             return view('brgy-manage-officials');
         })->name('brgy.manage-offcials');
 
-        Route::get('add/residents', function () {
+        Route::get('show/registration/residents', function () {
             return view('add-residents');
-        })->name('add.residents');
+        })->name('show.registration.residents');
 
-        Route::get('list/residents', function () {
-            return view('list-residents');
-        })->name('list.residents');
+        Route::post('add/residents', [ResidentController::class, 'store'])->name('add.residents');
+        
+        Route::get('list/residents', [ResidentController::class, 'index'])->name('list.residents');
 
-        Route::get('resident/profile', function () {
-            return view('resident-profile');
-        })->name('resident.profile');
+        Route::get('resident/profile/{id}', [ResidentController::class, 'show'])->name('resident.profile');
     });
 });

@@ -110,7 +110,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{route('add.residents')}}" class="nav-link">
+                <a href="{{route('show.registration.residents')}}" class="nav-link">
                   <i class="nav-icon fas fa-user ml-3"></i>
                   <p>Add New Resident</p></a>
               </li>
@@ -312,27 +312,10 @@ $('#editModal').on('show.bs.modal', function (e) {
 </script>
 
 <script>
-function diffDate() {
-var due = document.getElementById('due').value;
-var today = document.getElementById('today').value;
-var result = document.getElementById('dateResult');
-  if(result !=null)
-  {
-  	if(due < today){
-      const date1 = new Date(due);
-      const date2 = new Date(today);
-      const diffTime = Math.abs(date2 - date1);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) - 1); 
-        console.log(diffTime + " milliseconds");
-        console.log(diffDays + " days");
-        result.innerHTML = "The days lapse is : " + diffDays;
-    }
-    else {
-      result.innerHTML = "The day lapse is : 0";
-    }
-  }
-
-}
+var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
 </script>
 </body>
 </html>
