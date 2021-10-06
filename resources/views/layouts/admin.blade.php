@@ -219,6 +219,8 @@
 
     <!-- Main content -->
     <div class="content">
+    @include('sweetalert::alert')
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
       @yield('content')
     </div>
     <!-- /.content -->
@@ -261,10 +263,12 @@
 <script src="{{ asset('vendor/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/dist/js/adminlte.min.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/myjs.js') }}" defer></script>
 
 <script>
   $(function () {
-    $("#food_item").DataTable({
+    $("#list_item").DataTable({
       "order":[[0,'desc']],
       "responsive": true, 
       "lengthChange": true, 
@@ -272,50 +276,13 @@
       "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
     });
   });
+
+  var loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+
 </script>
 
-<script>
-$('#returnModal').on('show.bs.modal', function (e) {
-  var opener=e.relatedTarget;
-
-  var issueId=$(opener).attr('issue-id');
-  var returnOn=$(opener).attr('return-on');
-  var inputQty=$(opener).attr('input-qty');
-
-  $('#returnForm').find('[name="issueId"]').val(issueId);
-  $('#returnForm').find('[name="dueOn"]').val(returnOn);
-  $('#returnForm').find('[name="inputQty"]').val(inputQty);
-});
-
-$('#notReturnModal').on('show.bs.modal', function (e) {
-  var opener=e.relatedTarget;
-
-  var issueId=$(opener).attr('issue-id');
-  var reportsOn=$(opener).attr('report-on');
-  var inputQty=$(opener).attr('input-qty');
-
-  $('#notReturnForm').find('[name="issueId"]').val(issueId);
-  $('#notReturnForm').find('[name="reportOn"]').val(reportsOn);
-  $('#notReturnForm').find('[name="input_qty"]').val(inputQty);
-});
-</script>
-
-<script>
-$('#editModal').on('show.bs.modal', function (e) {
-  var opener=e.relatedTarget;
-  var id=$(opener).attr('id');
-  var category=$(opener).attr('category-name');
-
-  $('#editCatForm').find('[name="id"]').val(id);
-  $('#editCatForm').find('[name="categories"]').val(category);
-});
-</script>
-
-<script>
-var loadFile = function (event) {
-  var image = document.getElementById("output");
-  image.src = URL.createObjectURL(event.target.files[0]);
-};
-</script>
 </body>
 </html>

@@ -10,23 +10,23 @@
             </div>
             <div class="card-body box-profile">
                 <div class="text-center mb-2">
-                    <img class="brand-image img-circle elevation-3" height="200" src="{{ asset('images/no-picture.png')}}">
+                    <img class="brand-image img-circle elevation-3" height="200" width="200" src="/storage/resident_image/{{$resident->image}}">
                 </div>
-                <h3 class="profile-username text-center p-3">Captain Marvells</h3>
+                <h3 class="profile-username text-center p-3">{{$resident->fname}} {{$resident->mname}} {{$resident->lname}}</h3>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">Male</a>
+                    <b>Gender</b> <a class="float-right">{{$resident->gender}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Age</b> <a class="float-right">38</a>
+                    <b>Age</b> <a class="float-right">{{$resident->age}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Civil Staus</b> <a class="float-right">Single</a>
+                    <b>Civil Staus</b> <a class="float-right">{{$resident->civil_status}}</a>
                     </li>
                    
                     <li class="list-group-item">
-                    <b>Status</b> <a class="float-right bg-success rounded p-1">Alive</a>
+                    <b>Status</b> <a class="float-right bg-success rounded p-1">{{$resident->status}}</a>
                     </li>
                 </ul>
             </div>
@@ -53,38 +53,38 @@
                     <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                            <b>Nick Name</b> <a class="float-right">Capitan Boom</a>
+                            <b>Nick Name</b> <a class="float-right">{{$resident->nname}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Birth Date</b> <a class="float-right">Feb 20, 1985</a>
+                            <b>Birth Date</b> <a class="float-right">{{Carbon\Carbon::parse($resident->bday)->format('M d, Y')}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Phone Number</b> <a class="float-right">09213341256</a>
+                            <b>Phone Number</b> <a class="float-right">{{$resident->cnumber}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Email Address</b> <a class="float-right">captain_marvells@gmail.com</a>
+                            <b>Email Address</b> <a class="float-right">{{$resident->email}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Birth Place</b> <a class="float-right">Bulan, Sorsogon</a>
+                            <b>Birth Place</b> <a class="float-right">{{$resident->bplace}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Street</b> <a class="float-right">Sta. Rosa St.</a>
+                            <b>Street</b> <a class="float-right">{{$resident->street}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Purok/Area</b> <a class="float-right">Purok 1</a>
+                            <b>Purok/Area</b> <a class="float-right">{{$resident->purok}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Citizenship</b> <a class="float-right">Filipino</a>
+                            <b>Citizenship</b> <a class="float-right">{{$resident->citizenship}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Defferently Disabled Person</b> <a class="float-right">none</a>
+                            <b>Defferently Disabled Person</b> <a class="float-right">{{$resident->ddperson}}</a>
                             </li>
                             <li class="list-group-item">
-                            <b>Religion</b> <a class="float-right">Roman Catholic</a>
+                            <b>Religion</b> <a class="float-right">{{$resident->religion}}</a>
                             </li>
                             </li>
                             <li class="list-group-item">
-                            <b>Occupation</b> <a class="float-right">Programmer</a>
+                            <b>Occupation</b> <a class="float-right">{{$resident->occupation}}</a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                        <table id="food_item" class="table table-bordered table-striped">
+                        <table id="list_item" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th hidden="">No.</th>

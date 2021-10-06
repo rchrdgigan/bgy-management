@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Resident;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ResidentController extends Controller
 {
@@ -73,8 +73,7 @@ class ResidentController extends Controller
             'status'=> $request->status,
             'image'=> $fileNameToStore,
         ]);
-        return back()->with('message', 'Successfully Added!');
-      
+        return redirect()->route('list.residents')->with('sucess_message','Successfully added!');
     }
 
     /**
@@ -87,6 +86,7 @@ class ResidentController extends Controller
     {
         //View Profile
         $resident = Resident::findOrFail($id);
+        $resident->first();
         return view('resident-profile',compact('resident'));
     }
 
@@ -98,7 +98,10 @@ class ResidentController extends Controller
      */
     public function edit($id)
     {
-        //
+         //Show Profile to Edit
+         $resident = Resident::findOrFail($id);
+         $resident->first();
+         return view('edit-residents',compact('resident'));
     }
 
     /**
@@ -110,7 +113,44 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'image'         => 'nullable|image|file|max:5000',
+        ]);
+        $resident = Resident::findOrFail($id);
+        $resident->fname = $request->fname;
+        $resident->mname = $request->mname;
+        $resident->lname = $request->lname;
+        $resident->nname = $request->nickname;
+        $resident->gender = $request->gender;
+        $resident->civil_status = $request->civil_status;
+        $resident->age = $request->age;
+        $resident->bday = $request->birthdate;
+        $resident->bplace = $request->bplace;
+        $resident->cnumber = $request->contact_number;
+        $resident->email = $request->email;
+        $resident->street = $request->street;
+        $resident->purok = $request->purok;
+        $resident->citizenship = $request->citizenship;
+        $resident->ddperson = $request->disabled_person;
+        $resident->religion = $request->religion;
+        $resident->occupation = $request->occupation;
+        $resident->status = $request->status;
+        if($request->hasFile('image'))
+        {
+            $location = 'public/resident_image'.$resident->image;
+            if(File::exists($location))
+            {
+                File::delete($location);
+            }
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/resident_image',$fileNameToStore);
+            $resident->image = $fileNameToStore;
+        }
+        $resident->update();
+        return redirect()->route('list.residents')->with('sucess_message','Successfully updated!');
     }
 
     /**
@@ -119,8 +159,10 @@ class ResidentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $resident = Resident::findOrFail($request->id);
+        $resident->delete();
+        return redirect()->route('list.residents')->with('delete_message', 'Deleted data!');
     }
 }
