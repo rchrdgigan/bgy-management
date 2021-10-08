@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('vendor/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('vendor/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendor/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('vendor/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('vendor/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -19,6 +22,11 @@
   <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
   <!-- Mysytle style -->
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('vendor/plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="{{ asset('vendor/plugins/codemirror/codemirror.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendor/plugins/codemirror/theme/monokai.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -130,14 +138,14 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('issue.certificate')}}" class="nav-link">
                   <i class="nav-icon fas fa-user ml-3"></i>
                   <p>Issue Certificate</p></a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-certificate ml-3"></i>
-                  <p>List of Certificate</p></a>
+                <a href="{{route('gen.certificate')}}" class="nav-link">
+                <i class="nav-icon fas fa-file-alt ml-3"></i>
+                  <p>List of Generated</p></a>
               </li>
             </ul>
           </li>
@@ -150,7 +158,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('list.records')}}" class="nav-link">
                   <i class="nav-icon fas fa-user-slash ml-3"></i>
                   <p>List of Records</p></a>
               </li>
@@ -158,23 +166,10 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link">
+            <a href="{{route('list.notif')}}" class="nav-link">
               <i class="nav-icon fas fa-envelope-open-text"></i>
               <p>SMS Notification</p>
-            <i class="nav-icon fas fa-angle-left right"></i>
             </a>
-            <ul class="nav nav-treeview" style="display: none;">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-friends ml-3"></i>
-                <p>Disaster Notification</p></a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user-friends ml-3"></i>
-                <p>Meeting Notification</p></a>
-              </li>
-            </ul>
           </li>
 
           <li class="nav-item">
@@ -248,6 +243,8 @@
 <script src="{{ asset('vendor/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('vendor/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('vendor/plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('vendor/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendor/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -263,6 +260,13 @@
 <script src="{{ asset('vendor/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/dist/js/adminlte.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ asset('vendor/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- CodeMirror -->
+<script src="{{ asset('vendor/plugins/codemirror/codemirror.js') }}"></script>
+<script src="{{ asset('vendor/plugins/codemirror/mode/css/css.js') }}"></script>
+<script src="{{ asset('vendor/plugins/codemirror/mode/xml/xml.js') }}"></script>
+<script src="{{ asset('vendor/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
 <!-- Scripts -->
 <script src="{{ asset('js/myjs.js') }}" defer></script>
 
@@ -282,6 +286,65 @@
     image.src = URL.createObjectURL(event.target.files[0]);
   };
 
+  $(function () {
+     //Initialize Select2 Elements
+     $('.select2').select2();
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4',
+      placeholder: 'Select an option'
+    });
+
+    // Summernote
+    $('#clearance').summernote({placeholder: 'Please input purpose', tabsize: 2, height: 100,});
+    $('#business').summernote({placeholder: 'Please input purpose', tabsize: 2, height: 100,});
+    $('#indigency').summernote({placeholder: 'Please input purpose', tabsize: 2, height: 100,});
+    $('#at').summernote({placeholder: 'Please input action taken', tabsize: 2, height: 100,});
+    $('#cs').summernote({placeholder: 'Please input complianant statement', tabsize: 2, height: 100,});
+  });
+  
+  $('#showIndigencyModal').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var id=$(opener).attr('id');
+    var fname=$(opener).attr('fname');
+
+    $('#indigency_frm').find('[name="id"]').val(id);
+    document.getElementById("fname").innerHTML = fname;
+  });
+</script>
+<script>
+  $(function () {
+    $("#certificate_item").DataTable({
+      "order":[[0,'desc']],
+      "responsive": true, 
+      "lengthChange": true, 
+      "autoWidth": false,
+      "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
+    });
+  });
+</script>
+<script>
+  $(function () {
+    $("#business_item").DataTable({
+      "order":[[0,'desc']],
+      "responsive": true, 
+      "lengthChange": true, 
+      "autoWidth": false,
+      "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
+    });
+  });
+</script>
+<script>
+  $(function () {
+    $("#indigency_item").DataTable({
+      "order":[[0,'desc']],
+      "responsive": true, 
+      "lengthChange": true, 
+      "autoWidth": false,
+      "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
+    });
+  });
 </script>
 
 </body>

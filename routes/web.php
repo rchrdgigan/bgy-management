@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     HomeController,
     ResidentController,
-    OfficialController
-
+    OfficialController,
+    IssueCertificateController,
+    CaseRecordController,
+    NotificationController
 };
     
 Auth::routes();
@@ -40,5 +42,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('delete/official', [OfficialController::class, 'destroy'])->name('delete.official');
         Route::put('official/info', [OfficialController::class, 'update'])->name('update.official');
         Route::get('list/official/term', [OfficialController::class, 'officialsTermList'])->name('brgy.official');
+
+        //issue certificate
+        Route::get('list/residents/certificate', [IssueCertificateController::class, 'index'])->name('issue.certificate');
+        Route::get('list/generated/certificate', [IssueCertificateController::class, 'listGenCertificate'])->name('gen.certificate');
+
+        //case record
+        Route::get('list/case/records', [CaseRecordController::class, 'index'])->name('list.records');
+
+        //sms notification
+        Route::get('list/notif/records', [NotificationController::class, 'index'])->name('list.notif');
+
     });
 });

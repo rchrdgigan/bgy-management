@@ -19,28 +19,28 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                    <b>Gender</b> <a class="float-right">{{$data->gender}}</a>
+                    <b><i class="fas fa-venus-mars"></i> Gender</b> <a class="float-right">{{$data->gender}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Age</b> <a class="float-right">{{$data->age}}</a>
+                    <b><i class="fas fa-sort-numeric-up-alt"></i> Age</b> <a class="float-right">{{$data->age}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Civil Staus</b> <a class="float-right">{{$data->civil_status}}</a>
+                    <b><i class="fas fa-thermometer-three-quarters"></i> Civil Staus</b> <a class="float-right">{{$data->civil_status}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Birth Date</b> <a class="float-right">{{Carbon\Carbon::parse($data->bday)->format('M d, Y')}}</a>
+                    <b><i class="fas fa-calendar-week"></i> Birth Date</b> <a class="float-right">{{Carbon\Carbon::parse($data->bday)->format('M d, Y')}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Birth Place</b> <a class="float-right">{{$data->bplace}}</a>
+                    <b><i class="fas fa-location-arrow"></i> Birth Place</b> <a class="float-right">{{$data->bplace}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Phone Number</b> <a class="float-right">{{$data->cnumber}}</a>
+                    <b><i class="fas fa-sort-numeric-up-alt"></i> Phone Number</b> <a class="float-right">{{$data->cnumber}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Email Address</b> <a class="float-right">{{$data->email}}</a>
+                    <b><i class="fas fa-mail-bulk"></i> Email Address</b> <a class="float-right">{{$data->email}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b>Status</b> <a class="float-right bg-success rounded p-1">{{$data->status}}</a>
+                    <b><i class="fas fa-info"></i> Status</b> <a class="float-right bg-success rounded p-1">{{$data->status}}</a>
                     </li>
                 </ul>
             </div>
@@ -85,7 +85,7 @@
                             <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                <h5 class="description-header">Gender</h5>
+                                <h5 class="description-header"><i class="fas fa-venus-mars"></i> Gender</h5>
                                 <span class="description-text">{{$member->gender}}</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -93,7 +93,7 @@
                             <!-- /.col -->
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                <h5 class="description-header">Age</h5>
+                                <h5 class="description-header"><i class="fas fa-sort-numeric-up-alt"></i> Age</h5>
                                 <span class="description-text">{{$member->age}}</span>
                                 </div>
                                 <!-- /.description-block -->
