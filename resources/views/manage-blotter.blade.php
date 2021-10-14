@@ -38,7 +38,7 @@
                 <tr>
                     <td hidden="">1</td>
                     <td><p class="bg-success rounded text-center">New</p></td>
-                    <td>Nagkawat Biyawas</td>
+                    <td>Nagkawat</td>
                     <td>Sep 30, 2021</td>
                     <td>Oct 2, 2021</td>
                     <td>

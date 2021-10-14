@@ -5,22 +5,22 @@
         <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             <li class="nav-item">
-            <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true"><i class="fas fa-file-invoice"></i> Clearance</a>
+            <a class="nav-link active" id="custom-tabs-tabs-clearance-tab" data-toggle="pill" href="#custom-tabs-clearance" role="tab" aria-controls="custom-tabs-clearance" aria-selected="true"><i class="fas fa-file-invoice"></i> Clearance</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false"><i class="fas fa-file-contract"></i> Business Permit</a>
+            <a class="nav-link" id="custom-tabs-tabs-business-tab" data-toggle="pill" href="#custom-tabs-business" role="tab" aria-controls="custom-tabs-business" aria-selected="false"><i class="fas fa-file-contract"></i> Business Permit</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false"><i class="fas fa-file-invoice-dollar"></i> Indigency</a>
+            <a class="nav-link" id="custom-tabs-indigency-tab" data-toggle="pill" href="#custom-tabs-indigency" role="tab" aria-controls="custom-tabs-indigency" aria-selected="false"><i class="fas fa-file-invoice-dollar"></i> Indigency</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false"><i class="fas fa-file"></i> All</a>
+            <a class="nav-link" id="custom-tabs-all-tab" data-toggle="pill" href="#custom-tabs-all" role="tab" aria-controls="custom-tabs-all" aria-selected="false"><i class="fas fa-file"></i> All</a>
             </li>
         </ul>
         </div>
         <div class="card-body">
             <div class="tab-content" id="custom-tabs-four-tabContent">
-                <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                <div class="tab-pane fade active show" id="custom-tabs-clearance" role="tabpanel" aria-labelledby="custom-tabs-clearance-tab">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -33,12 +33,19 @@
                                 <th>Date Issued</th>
                                 <th>Date Expired</th>
                                 <th>OR Number</th>
-                                <th>Action</th>
+                                <th>Tools</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- <tr>
-                            </tr> -->
+                            <tr>
+                                <td hidden="">1</td>
+                                <td>Karla Po</td>
+                                <td>Clearance</td>
+                                <td>2021-10-12</td>
+                                <td>2022-10-12</td>
+                                <td>31221314</td>
+                                <td><a href=""><i class="fas fa-print"></i> Print</a></td>
+                            </tr>
                             </tbody>
                         </table>
                         </div>
@@ -46,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                <div class="tab-pane fade" id="custom-tabs-business" role="tabpanel" aria-labelledby="custom-tabs-business-tab">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -63,8 +70,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- <tr>
-                            </tr> -->
+                            <tr>
+                                <td hidden="">1</td>
+                                <td>Karla Po</td>
+                                <td>Clearance</td>
+                                <td>2021-10-12</td>
+                                <td>2022-10-12</td>
+                                <td>31221314</td>
+                                <td><a href=""><i class="fas fa-print"></i> Print</a></td>
+                            </tr>
                             </tbody>
                         </table>
                         </div>
@@ -72,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                <div class="tab-pane fade" id="custom-tabs-indigency" role="tabpanel" aria-labelledby="custom-tabs-indigency-tab">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -84,12 +98,48 @@
                                 <th>Generated Type</th>
                                 <th>Date Issued</th>
                                 <th>Date Expired</th>
-                                <th>OR Number</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td hidden="">1</td>
+                                <td>Karla Po</td>
+                                <td>Clearance</td>
+                                <td>2021-10-12</td>
+                                <td>2022-10-12</td>
+                                <td><a href=""><i class="fas fa-print"></i> Print</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="custom-tabs-all" role="tabpanel" aria-labelledby="custom-tabs-all-tab">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                        <table id="all_data" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th hidden="">No.</th>
+                                <th>Name</th>
+                                <th>Generated Type</th>
+                                <th>Date Issued</th>
+                                <th>Date Expired</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <!-- <tr>
+                                <td hidden="">1</td>
+                                <td>Karla Po</td>
+                                <td>Clearance</td>
+                                <td>2021-10-12</td>
+                                <td>2022-10-12</td>
+                                <td><a href=""><i class="fas fa-print"></i> Print</a></td>
                             </tr> -->
                             </tbody>
                         </table>

@@ -346,6 +346,17 @@
     });
   });
 </script>
+<script>
+  $(function () {
+    $("#all_data").DataTable({
+      "order":[[0,'desc']],
+      "responsive": true, 
+      "lengthChange": true, 
+      "autoWidth": false,
+      "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
+    });
+  });
+</script>
 
 </body>
 </html>
