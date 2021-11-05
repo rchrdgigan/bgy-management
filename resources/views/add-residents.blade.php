@@ -96,16 +96,23 @@
                         </select>
                         </div>
 
+                        <label for="married">Married to (Optional) :</label>
+                        <div class="input-group mb-3">
+                        <input type="text" id="married" name="married" 
+                                class="inp form-control" 
+                                placeholder="Input wife/husband name">
+                        </div>
+
                         <label for="age">Age :</label>
                         <div class="input-group mb-3">
-                        <input type="number" id="age" name="age" 
+                        <input type="number" id="age" readonly name="age" 
                                 class="inp form-control" 
-                                placeholder="Input Age" required="">
+                                placeholder="Set birthdate to generate age" required="">
                         </div>
                         
                         <label for="birthdate">Birth Date :</label>
                         <div class="input-group mb-3">
-                        <input type="date" id="birthdate" name="birthdate" 
+                        <input type="date" id="birthdate" onchange="myFunction()" name="birthdate" 
                                 class="inp form-control" 
                                 placeholder="Input Birth Date" required="">
                         </div>

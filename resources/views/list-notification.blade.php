@@ -22,7 +22,7 @@
                             <div class="card-tools">
                                 <button type="button"
                                         data-toggle="modal" 
-                                        data-target="#addNewModal"
+                                        data-target="#showDisastedModal"
                                         class="btn btn-warning">
                                     <i class="fas fa-plus"></i>
                                     Create Notification
@@ -109,6 +109,38 @@
             </div>
         </div>
         <!-- /.card -->
+    </div>
+</div>
+
+
+<div class="modal fade mt-5" id="showDisastedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i>Choose Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post" id="business_frm">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <a class="btn btn-danger p-5 col-12" href="{{route('fire.form')}}"><i class="fas fa-dumpster-fire text-white" style="font-size:200px;"></i><br><b>Fire Notifier</b></a>
+                        </div> 
+                        
+                        <div class="col-6 text-center">
+                        <form action="" method="POST">
+                            <input type="text" name="notification_type" value="All" hidden>
+                            <input type="text"name="message" value="FLOOD ALERT: Ang baha ay posibleng pang tumaas kaya magsilikas na ang mga nasa mabababang lugar na binabaha." hidden>
+                            <button type="submit" class="btn btn-primary p-5 col-12"><i class="fas fa-cloud-rain text-white" style="font-size:200px;"></i><br><b>Flood Notifier</b></button>
+                        </form>
+                        </div>
+                    </div>
+                   
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection

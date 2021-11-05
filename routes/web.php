@@ -46,12 +46,25 @@ Route::group(['middleware' => 'auth'], function () {
         //issue certificate
         Route::get('list/residents/certificate', [IssueCertificateController::class, 'index'])->name('issue.certificate');
         Route::get('list/generated/certificate', [IssueCertificateController::class, 'listGenCertificate'])->name('gen.certificate');
+        Route::post('generate/certificate/records', [IssueCertificateController::class, 'store'])->name('generate.certificate');
+
+        //print certificate
+        Route::get('print/clearance/certificate/{id}', [IssueCertificateController::class, 'printClearance'])->name('print.clearance');
+        Route::get('print/business/certificate', [IssueCertificateController::class, 'printBusiness'])->name('print.business');
+        Route::get('print/indigency/certificate', [IssueCertificateController::class, 'printIndigency'])->name('print.indigency');
 
         //case record
         Route::get('list/case/records', [CaseRecordController::class, 'index'])->name('list.records');
+        Route::post('added/case/records', [CaseRecordController::class, 'store'])->name('add.records');
+        Route::get('view/resident/records/{id}', [CaseRecordController::class, 'show'])->name('show.records');
+        Route::get('edit/resident/records/{id}', [CaseRecordController::class, 'edit'])->name('edit.records');
+        Route::put('udpate/resident/records/{id}', [CaseRecordController::class, 'update'])->name('update.records');
+        Route::delete('delete/resident/records', [CaseRecordController::class, 'destroy'])->name('delete.records');
 
         //sms notification
         Route::get('list/notif/records', [NotificationController::class, 'index'])->name('list.notif');
+        Route::get('fire/notif/form', [NotificationController::class, 'fireForm'])->name('fire.form');
+
 
     });
 });

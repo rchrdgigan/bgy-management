@@ -302,6 +302,8 @@
     $('#indigency').summernote({placeholder: 'Please input purpose', tabsize: 2, height: 100,});
     $('#at').summernote({placeholder: 'Please input action taken', tabsize: 2, height: 100,});
     $('#cs').summernote({placeholder: 'Please input complianant statement', tabsize: 2, height: 100,});
+    $('#at-edit').summernote({placeholder: 'Please input action taken', tabsize: 2, height: 100,});
+    $('#cs-edit').summernote({placeholder: 'Please input complianant statement', tabsize: 2, height: 100,});
   });
   
   $('#showIndigencyModal').on('show.bs.modal', function (e) {
@@ -311,6 +313,32 @@
 
     $('#indigency_frm').find('[name="id"]').val(id);
     document.getElementById("fname").innerHTML = fname;
+  });
+
+  $('#delCaseModal').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var id=$(opener).attr('id');
+
+    $('#delFrm').find('[name="id"]').val(id);
+  });
+
+  $('#showClearanceModal').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var resident_id=$(opener).attr('resident_id');
+
+    $('#clearance_frm').find('[name="resident_id"]').val(resident_id);
+  });
+  $('#showBusinessModal').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var resident_id=$(opener).attr('resident_id');
+
+    $('#business_frm').find('[name="resident_id"]').val(resident_id);
+  });
+  $('#showIndigencyModal').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var resident_id=$(opener).attr('resident_id');
+
+    $('#indigency_frm').find('[name="resident_id"]').val(resident_id);
   });
 </script>
 <script>
@@ -356,6 +384,35 @@
       "lengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
     });
   });
+</script>
+
+<script>
+  function myFunction() 
+  {
+    var x = document.getElementById("birthdate").value;
+
+    const d = new Date();
+    const y = new Date(x);
+    var result;
+    let year = d.getFullYear();
+    let year_input = y.getFullYear();
+
+    result = year - year_input;
+    document.getElementById("age").value = result;
+  }
+</script>
+
+<script>
+  var x = document.getElementById("birthdate").value;
+
+  const d = new Date().getFullYear();
+  const y = new Date(x);
+  var result;
+  let year = d;
+  let year_input = y.getFullYear();
+
+  result = year - year_input;
+  document.getElementById("ageID").value = result;
 </script>
 
 </body>

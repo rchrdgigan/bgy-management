@@ -5,7 +5,7 @@
                 
         <section class="col-lg-3 connectedSortable ui-sortable">
         <div class="card card-primary card-outline">
-        @forelse($official->where('position','Captain')->take(1) as $data)
+        @forelse($official->where('position','Punong Barangay')->take(1) as $data)
             <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-user"></i> Barangay Captain</h3>
             </div>
@@ -22,13 +22,14 @@
                     <b><i class="fas fa-venus-mars"></i> Gender</b> <a class="float-right">{{$data->gender}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b><i class="fas fa-sort-numeric-up-alt"></i> Age</b> <a class="float-right">{{$data->age}}</a>
+                    <b><i class="fas fa-sort-numeric-up-alt"></i> Age</b> <a class="float-right" id="ageID">{{$data->age}}</a>
                     </li>
                     <li class="list-group-item">
                     <b><i class="fas fa-thermometer-three-quarters"></i> Civil Staus</b> <a class="float-right">{{$data->civil_status}}</a>
                     </li>
                     <li class="list-group-item">
-                    <b><i class="fas fa-calendar-week"></i> Birth Date</b> <a class="float-right">{{Carbon\Carbon::parse($data->bday)->format('M d, Y')}}</a>
+                    <input type="date" id="birthdate" value="{{Carbon\Carbon::parse($data->bday)->format('Y-m-d')}}" hidden>
+                    <b><i class="fas fa-calendar-week"></i> Birth Date</b> <a class="float-right" >{{Carbon\Carbon::parse($data->bday)->format('M d, Y')}}</a>
                     </li>
                     <li class="list-group-item">
                     <b><i class="fas fa-location-arrow"></i> Birth Place</b> <a class="float-right">{{$data->bplace}}</a>
@@ -69,7 +70,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                @foreach($official->where('position','!=','Captain') as $member)
+                @foreach($official->where('position','!=','Punong Barangay') as $member)
                 <div class="col-md-4">
                     <!-- Widget: user widget style 1 -->
                     <div class="card card-widget widget-user">

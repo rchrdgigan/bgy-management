@@ -189,7 +189,7 @@
                                         <div class="input-group mb-3">
                                         <input type="number" id="age" name="age" 
                                                 class="inp form-control" 
-                                                placeholder="Input Age" required="">
+                                                placeholder="Set birthdate to generate age" readonly required="">
                                         </div>
 
                                         <div class="row">
@@ -226,7 +226,7 @@
 
                                         <label for="birthdate">Birth Date :</label>
                                         <div class="input-group mb-3">
-                                        <input type="date" id="birthdate" name="birthdate" 
+                                        <input type="date" id="birthdate" onchange="myFunction()" name="birthdate" 
                                                 class="inp form-control" 
                                                 placeholder="Input Birth Date" required="">
                                         </div>
@@ -275,9 +275,12 @@
 
                                         <label for="occupation">Position :</label>
                                         <div class="input-group mb-3">
-                                        <input type="text" id="occupation" name="position" 
-                                                class="inp form-control" 
-                                                placeholder="Input Position Ex: Captain" required="">
+                                            <select name="position"  id="occupation" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
+                                                <option value="Punong Barangay">Punong Barangay</option>
+                                                <option value="Brgy. Secretary">Brgy. Secretary</option>
+                                                <option value="Kagawad">Kagawad</option>
+                                                <option value="SK Chairman">SK Chairman</option>
+                                            </select>
                                         </div>
 
                                         <label for="status">Status :</label>
@@ -416,9 +419,9 @@
 
                                         <label for="age">Age :</label>
                                         <div class="input-group mb-3">
-                                        <input type="number" id="age" name="age" 
+                                        <input type="number" id="editage" name="age" 
                                                 class="inp form-control" 
-                                                placeholder="Input Age" required="">
+                                                placeholder="Set birthdate to generate age" readonly required="">
                                         </div>
 
                                         <div class="row">
@@ -455,7 +458,7 @@
 
                                         <label for="birthdate">Birth Date :</label>
                                         <div class="input-group mb-3">
-                                        <input type="date" id="birthdate" name="birthdate" 
+                                        <input type="date" id="editbirthdate" onchange="editFunction()" name="birthdate" 
                                                 class="inp form-control" 
                                                 placeholder="Input Birth Date" required="">
                                         </div>
@@ -504,9 +507,12 @@
 
                                         <label for="occupation">Position :</label>
                                         <div class="input-group mb-3">
-                                        <input type="text" id="occupation" name="position" 
-                                                class="inp form-control" 
-                                                placeholder="Input Position Ex: Captain" required="">
+                                            <select name="position"  id="occupation" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
+                                                <option value="Punong Barangay">Punong Barangay</option>
+                                                <option value="Brgy. Secretary">Brgy. Secretary</option>
+                                                <option value="Kagawad">Kagawad</option>
+                                                <option value="SK Chairman">SK Chairman</option>
+                                            </select>
                                         </div>
 
                                         <label for="status">Status :</label>

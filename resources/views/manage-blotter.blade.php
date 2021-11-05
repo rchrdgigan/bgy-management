@@ -35,36 +35,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td hidden="">1</td>
-                    <td><p class="bg-success rounded text-center">New</p></td>
-                    <td>Nagkawat</td>
-                    <td>Sep 30, 2021</td>
-                    <td>Oct 2, 2021</td>
-                    <td>
-                        <a class="btn btn-primary m-1 .btn-sm"
-                            type="button" 
-                            class="btn btn-primary" 
-                            data-toggle="modal" 
-                            data-target="#showCaseModal">
-                            <i class="fas fa-eye"></i>
-                        </a> 
-                        <a class="btn btn-danger m-1 .btn-sm"
-                            type="button" 
-                            class="btn btn-primary" 
-                            data-toggle="modal" 
-                            data-target="#delCaseModal">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                        <a class="btn btn-success m-1 .btn-sm"
-                            type="button" 
-                            data-toggle="modal" 
-                            data-target="#editCaseModal">
-                            <i class="fas fa-pencil-alt"></i>
-                        </a>
-                    </form>
-                    </td>
-                </tr>
+                @foreach($record as $data)
+                    <tr>
+                        <td hidden="">{{$data->id}}</td>
+                        <td>
+                            @if($data->remarks == "Open" || $data->remarks == "New")
+                            <p class="{{($data->status == 'New')? 'bg-success' : 'bg-info'}} rounded text-center">{{$data->status}}</p>
+                            @else
+                            <p class="bg-danger rounded text-center">Close</p>
+                            @endif
+                        </td>
+                        <td>{{$data->type_incident}}</td>
+                        <td>{{$data->date_time_incident}}</td>
+                        <td>{{$data->date_time_reported}}</td>
+                        <td>
+                            <a class="btn btn-primary m-1 .btn-sm"
+                                type="button" 
+                                class="btn btn-primary" 
+                                href="{{route('show.records',$data->id)}}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a class="btn btn-danger m-1 .btn-sm"
+                                type="button" 
+                                class="btn btn-primary" 
+                                id="{{$data->id}}"
+                                data-toggle="modal" 
+                                data-target="#delCaseModal">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            <a class="btn btn-success m-1 .btn-sm"
+                                type="button" 
+                                href="{{route('edit.records',$data->id)}}">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </form>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             </div>
@@ -75,6 +82,7 @@
   </div>
 </div>
 
+<!-- Add -->
 <div class="modal fade" id="addCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -84,9 +92,10 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
+            <form action="{{route('add.records')}}" method="POST" id="showForm">
+            @csrf
             <div class="modal-body">
                 <div class="container p-3">
-                    <form id="showForm">
                         <div class="form-group">
                             <label for="complianant">Name of Complianant :</label>
                             <div class="input-group mb-3">
@@ -97,23 +106,23 @@
                         </div>
                         <label for="citizenship">Complianant Statement :</label>
                         <div class="input-group mb-3">
-                            <textarea id="cs"></textarea>
+                            <textarea id="cs" name="complianant_statement"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Name of Repondent</label>
-                            <select class="select2" multiple="multiple" data-placeholder="Select a Respondent" style="width: 100%;">
-                                <option>Kadita</option>
-                                <option>Nana</option>
-                                <option>Bane</option>
+                            <select class="select2" multiple="multiple" name="respondent_name" data-placeholder="Select a Respondent" style="width: 100%;">
+                            @foreach($resident as $data)
+                                <option value="{{$data->fname}} {{$data->mname}} {{$data->lname}}">{{$data->fname}} {{$data->mname}} {{$data->lname}}</option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Person Involved</label>
                             <div class="select2-purple">
-                                <select class="select2" multiple="multiple" data-placeholder="Select a Person Involved" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                                    <option>Kadita</option>
-                                    <option>Nana</option>
-                                    <option>Bane</option>
+                                <select class="select2" multiple="multiple" name="involve_resident[]" data-placeholder="Select a Person Involved" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                @foreach($resident as $data2)
+                                    <option value="{{$data2->id}}">{{$data2->fname}} {{$data2->mname}} {{$data2->lname}}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -155,8 +164,8 @@
                                     <label for="status">Status :</label>
                                     <div class="input-group mb-3">
                                         <select style="width: 100%;" class="form-control" name="status">
-                                            <option>New</option>
-                                            <option>On-going</option>
+                                            <option value="New">New</option>
+                                            <option value="On-going">On-going</option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,8 +173,8 @@
                                     <label for="complianant">Remarks :</label>
                                     <div class="input-group mb-3">
                                         <select style="width: 100%;" class="form-control" name="remarks">
-                                            <option>Open</option>
-                                            <option>Close</option>
+                                            <option value="Open">Open</option>
+                                            <option value="Close">Close</option>
                                         </select>
                                     </div>
                                 </div>
@@ -173,38 +182,43 @@
                         </div>
                         <label for="citizenship">Action Taken :</label>
                         <div class="input-group mb-3">
-                            <textarea id="at"></textarea>
+                            <textarea id="at" name="action_taken"></textarea>
                         </div>
-                    </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger .btn-md" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i> Cancel</button>
                 <button type="submit" class="btn btn-primary .btn-md"><i class="fas fa-check"></i> Submit</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="showCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Delete -->
+<div class="modal fade" id="delCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-            <h5 class="modal-title" id="exampleModalLabel">Case Information</h5>
+            <div class="modal-header bg-danger">
+            <h5 class="modal-title" id="exampleModalLabel">Status Information</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
+            <form action="{{route('delete.records')}}" method="POST" id="delFrm">
+            @method('DELETE')
+            @csrf
             <div class="modal-body">
-                <div class="container p-3">
-                    <form id="showForm">
-                        
-                     
-
-                    </form>
-                </div>
+                <input type="text" name="id" hidden>
+                Are you sure you want to delete this Case Information?
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true"><i class="fas fa-times"></i> No</button>
+                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-check"></i> Yes</button>
+            </div>
+            </form>
         </div>
     </div>
 </div>
+
 @endsection

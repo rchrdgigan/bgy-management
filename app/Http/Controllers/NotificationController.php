@@ -10,4 +10,9 @@ class NotificationController extends Controller
     {
         return view('list-notification');
     }
+
+    public function fireForm()
+    {
+        return view('fire-notification-form');
+    }
 }

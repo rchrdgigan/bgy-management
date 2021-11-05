@@ -95,18 +95,38 @@
                         <div class="card-body">
                         <table id="list_item" class="table table-bordered table-striped">
                             <thead>
-                            <tr>
-                                <th hidden="">No.</th>
-                                <th>Status</th>
-                                <th>Case</th>
-                                <th>Date Reported</th>
-                                <th>Incident Date</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th hidden="">No.</th>
+                                    <th>Status</th>
+                                    <th>Type of Case</th>
+                                    <th>Date Reported</th>
+                                    <th>Incident Date</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <!-- <tr>
-                            </tr> -->
+                                @foreach($case as $dt)
+                                @foreach($dt->assign_resident_record as $sub_dt)
+                                <tr>
+                                
+                                    <td>
+                                        @if($sub_dt->remarks == "Open" || $sub_dt->remarks == "New")
+                                        <p class="{{($sub_dt->status_case == 'New')? 'bg-success' : 'bg-info'}} rounded text-center">{{$sub_dt->status_case}}</p>
+                                        @else
+                                        <p class="bg-danger rounded text-center">Close</p>
+                                        @endif
+                                    </td>
+                                    <td>{{$sub_dt->type_incident}}</td>
+                                    <td>{{$sub_dt->date_time_reported}}</td>
+                                    <td>{{$sub_dt->date_time_incident}}</td>
+                                    <td>
+                                        <a href="{{route('show.records',$sub_dt->record_id)}}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                         </div>

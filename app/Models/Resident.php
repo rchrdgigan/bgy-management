@@ -30,5 +30,10 @@ class Resident extends Model
         'status',
         'image',
     ];
+
+    public function assign_resident_record()
+    {
+        return $this->hasMany(AssignResidentRecord::class);
+    }
    
 }

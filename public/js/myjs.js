@@ -48,6 +48,19 @@ $('#editOfficialModal').on('show.bs.modal', function (e) {
   $('#image').attr('src',imgsrc);
 });
 
+function editFunction() 
+{
+  var x = document.getElementById("editbirthdate").value;
+  const d = new Date();
+  const y = new Date(x);
+  var result;
+  let year = d.getFullYear();
+  let year_input = y.getFullYear();
+
+  result = year - year_input;
+  document.getElementById("editage").value = result;
+}
+
 $('#showModal').on('show.bs.modal', function (e) {
   var opener=e.relatedTarget;
   var id=$(opener).attr('id');

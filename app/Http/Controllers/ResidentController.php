@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Resident;
+use App\Models\Record;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -87,7 +88,19 @@ class ResidentController extends Controller
         //View Profile
         $resident = Resident::findOrFail($id);
         $resident->first();
-        return view('resident-profile',compact('resident'));
+        $case = Resident::where('id',$id)->get();
+        $case->map(function($item){
+            $assign_resident_record = $item->assign_resident_record;
+            $assign_resident_record->map(function ($itemRecord){
+                $item_record = Record::findorfail($itemRecord->record_id);
+                $itemRecord->status_case = $item_record->status;
+                $itemRecord->remarks = $item_record->remarks;
+                $itemRecord->type_incident = $item_record->type_incident;
+                $itemRecord->date_time_reported = $item_record->date_time_reported;
+                $itemRecord->date_time_incident = $item_record->date_time_incident;
+            });
+        });
+        return view('resident-profile',compact('resident','case'));
     }
 
     /**
