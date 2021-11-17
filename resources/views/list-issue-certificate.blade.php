@@ -89,6 +89,14 @@
                                 placeholder="Input OR Number"/>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="cedula">Community Tax No. :</label>
+                        <div class="input-group mb-3">
+                            <input type="text" id="cedula" value="{{ old('cedula') }}" name="cedula" 
+                                class="inp form-control"
+                                placeholder="Input Community Tax No."/>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -132,6 +140,14 @@
                             <input type="text" id="or_number" value="{{ old('or_number') }}" name="or_number" 
                                 class="inp form-control"
                                 placeholder="Input OR Number"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Community Tax No. :</label>
+                        <div class="input-group mb-3">
+                            <input type="text" id="cedula" value="{{ old('cedula') }}" name="cedula" 
+                                class="inp form-control"
+                                placeholder="Input Community Tax No."/>
                         </div>
                     </div>
                 </div>

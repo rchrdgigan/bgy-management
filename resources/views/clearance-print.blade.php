@@ -65,7 +65,7 @@
               <td class="p-1 pl-2  border-left">{{$sub_d1->lname}}</td>
               <td class="p-1">{{$sub_d1->fname}}</td>
               <td class="p-1">{{$sub_d1->mname}}</td>
-              <td class="border-left p-1 pl-2 border-right">{{$sub_d1->status_p}}</td>
+              <td class="border-left p-1 pl-2 border-right">{{$sub_d1->civil_status}}</td>
             </tr>
             <tr>
               <th colspan="4" class="p-0 border-left pl-2 border-right">BONAFIDE RESIDENT OF THIS BARANGAY, WHOSE ADDRESS IS AT:</th>
@@ -87,8 +87,8 @@
               <th colspan="1" class="p-0 pl-2 border-left border-right">No. years residence of this Brgy.</th>
             </tr>
             <tr>
-              <td colspan="3" class="p-1 pl-2 border-left"></td>
-              <td colspan="1" class="p-1 pl-2 border-left border-right">20 yrs.</td>
+              <td colspan="3" class="p-1 pl-2 border-left">{{($sub_d1->married_to == NULL)? 'N/A' : $sub_d1->married_to}}</td>
+              <td colspan="1" class="p-1 pl-2 border-left border-right"></td>
             </tr>
             @endforeach
             <tr>
@@ -104,18 +104,21 @@
                 <p class="m-0">( ) HAS PENDING CASE:</p>
                 <p class="ml-5 m-0">NATURE OF CASE:________N/A_________________</p>
                 <p class="ml-5 m-0">AS OF:_________________N/A_________________</p>
-
+                <?php 
+                  $var = nl2br(html_entity_decode($d2->purpose));
+                  $new_var = filter_var($var, FILTER_SANITIZE_STRING);
+                ?>
                 <p class="ml-3 pt-5 m-0">Issued this day of <u>{{Carbon\Carbon::parse($d2->date_issue)->format('M d, Y')}}</u></p>
-                <p class="ml-3 m-0 ">For the purpose of: <u class="pl-5"><?php echo nl2br(html_entity_decode($d2->purpose))?></u></p>
+                <p class="ml-3 m-0 ">For the purpose of: <u>{{$new_var}}</u></p>
 
-                <p class="float-right pt-5 mr-5 m-0 text-center pb-1"><br><br><br> <span class="text-lg"><b><u>Ariel O. Gupit</u></b><br></span>Punong Barangay</p>
+                <p class="float-right pt-5 mr-5 m-0 text-center pb-1"><br><br><br> <span class="text-lg"><b><u>{{$officials->fname}} {{$officials->mname}} {{$officials->lname}}</u></b><br></span>Punong Barangay</p>
                 <p class="float-right pt-5 mr-5 m-0">Approved by:<br><br><br> <span class="text-center ml-3 text-lg"><b> </b><br></span></p>
               </td>
               <td colspan="1" class="text-center pt-3 border-right"></td>
             </tr>
             <tr>
               <td colspan="4" class="p-3 border-left border-bottom border-right">
-                <span class="ml-2">Community Tax No:</span><br>
+                <span class="ml-2">Community Tax No: {{$d2->cedula}}</span><br>
                 <span class="ml-2">Issued on:</span><br>
                 <span class="ml-2">Issued at:</span><br>
               </td>

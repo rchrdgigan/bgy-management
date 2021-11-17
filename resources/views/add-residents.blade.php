@@ -89,20 +89,22 @@
 
                         <label for="civil_status">Civil Status :</label>
                         <div class="input-group mb-3">
-                        <select name="civil_status" id="civil_status" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
+                        <select name="civil_status" id="civil_status" class="inp form-control" onchange="ifMarried();" style="width: 100%;" aria-hidden="true" required="">
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
                             <option value="Widowed">Widowed</option>
                         </select>
                         </div>
 
-                        <label for="married">Married to (Optional) :</label>
-                        <div class="input-group mb-3">
-                        <input type="text" id="married" name="married" 
-                                class="inp form-control" 
-                                placeholder="Input wife/husband name">
+                        <div id="married_to" style="display:none;">
+                            <label for="married">Married to (Optional) :</label>
+                            <div class="input-group mb-3">
+                            <input type="text" id="married" name="married_to" 
+                                    class="inp form-control" 
+                                    placeholder="Input wife/husband name">
+                            </div>
                         </div>
-
+                        
                         <label for="age">Age :</label>
                         <div class="input-group mb-3">
                         <input type="number" id="age" readonly name="age" 

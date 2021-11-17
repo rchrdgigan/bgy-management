@@ -39,8 +39,8 @@ class ResidentController extends Controller
     {
         $validated = $request->validate([
             'image'         => 'nullable|image|file|max:5000',
+            'married_to'    => 'nullable',
         ]);
-
         if($request->hasFile('image'))
         {
             $filenameWithExt = $request->file('image')->getClientOriginalName();
@@ -67,6 +67,7 @@ class ResidentController extends Controller
             'email'=> $request->email,
             'street'=> $request->street,
             'purok'=> $request->purok,
+            'married_to'=> $request->married_to,
             'citizenship'=> $request->citizenship,
             'ddperson'=> $request->disabled_person,
             'religion'=> $request->religion,
@@ -143,6 +144,7 @@ class ResidentController extends Controller
         $resident->email = $request->email;
         $resident->street = $request->street;
         $resident->purok = $request->purok;
+        $resident->married_to = $request->married_to;
         $resident->citizenship = $request->citizenship;
         $resident->ddperson = $request->disabled_person;
         $resident->religion = $request->religion;

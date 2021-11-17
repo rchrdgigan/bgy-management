@@ -11,7 +11,9 @@ class IssueCertificate extends Model
 
     protected $fillable = [
         'purpose',
+        'cedula',
         'or_number',
+        'cedula_number',
         'generated_type',
         'date_issue',
         'date_expire',

@@ -23,6 +23,7 @@ class Resident extends Model
         'email',
         'street',
         'purok',
+        'married_to',
         'citizenship',
         'ddperson',
         'religion',

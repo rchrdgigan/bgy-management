@@ -17,6 +17,7 @@ class CreateIssueCertificatesTable extends Migration
             $table->id();
             $table->string('purpose');
             $table->string('or_number')->nullable();
+            $table->string('cedula')->nullable();
             $table->string('generated_type');
             $table->string('date_issue');
             $table->string('date_expire');
