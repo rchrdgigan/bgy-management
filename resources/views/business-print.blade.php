@@ -42,7 +42,8 @@
     <!-- Table row -->
     <div class="row">
       <img src="{{ asset('images/brgy.jpg')}}" width="600" class="rounded-circle" style="position:absolute; left:230px; opacity: 0.2; top:200px;" alt="">
-
+      @foreach($issue_business as $d2)
+      @foreach($d2->resident_issue_certificate->take(1) as $sub_d1)
       <div class="col-12">
 
         <h1 class="mb-4 text-center text-danger" style="font-family:Bodoni MT Black; font-size: 35pt;"><b> BARANGAY BUSINESS CLEARANCE</b>
@@ -50,30 +51,36 @@
 
         <h4 class="mb-4"><b>TO WHOM IT MAY CONCERN:</b></h4>
 
-        <p style="text-indent: 80px; line-height: 40px; font-size:15pt; text-align: justify; text-justify: inter-word;">This is to certify that __________________________________________________________________of Barangay
-          B.S Aquino (Imelda), Bulan, Sorsogon with Community Tax No. ______________________ Issued on __________________ MTO Bulan, is hereby granted a Barangay Business Permit to engage in Business _____________________________________________
-          within our Barangay effective this date up to (December 31, 2021, and subject further to existing laws and authorities (Memorandum Circular No. 0-02 date November 16, 1992 issued by the Department of Interior and Local Government).</p>
+        <?php $var = nl2br(html_entity_decode($d2->purpose));
+         $new_var = filter_var($var, FILTER_SANITIZE_STRING);
+        ?>
+       
+        <p style="text-indent: 80px; line-height: 40px; font-size:15pt; text-align: justify; text-justify: inter-word;">This is to certify that <u>{{$sub_d1->fname}} {{$sub_d1->mname}} {{$sub_d1->lname}}</u> of Barangay
+          B.S Aquino (Imelda), Bulan, Sorsogon with Community Tax No. <u>{{$d2->cedula}}</u> Issued on <u>{{Carbon\Carbon::parse($d2->date_issue)->format('M d, Y')}}</u> MTO Bulan, is hereby granted a Barangay Business Permit to engage in Business <u>{{$new_var}}</u>
+          within our Barangay effective this date up to ({{Carbon\Carbon::parse($d2->date_expire)->format('M d, Y')}} and subject further to existing laws and authorities (Memorandum Circular No. 0-02 date November 16, 1992 issued by the Department of Interior and Local Government).</p>
         
-        <p style="text-indent: 80px; font-size:15pt;">Issued this ___________________ day of _______________________2021. at the Office of the Punong Barangay.</p>
+        <p style="text-indent: 80px; font-size:15pt;">Issued this  <u>{{Carbon\Carbon::parse($d2->date_issue)->format('F')}}</u> day of <u>{{Carbon\Carbon::parse($d2->date_issue)->format('jS')}}</u> 2021. at the Office of the Punong Barangay.</p>
         
         <p style="font-size: 12pt;" class="mb-4 pt-4">Attested by:</p>
         <div style="text-indent: 50px; font-size: 15pt;" class="col-3 text-center">
-          <b><u>IRENE R. HACHERO</u></b>
+          <b><u>{{$brgySecretary->fname}} {{$brgySecretary->mname}} {{$brgySecretary->lname}}</u></b>
           <p>Brgy. Secretary</p>
         </div>
 
         <div style="font-size: 15pt;" class="col-12 text-center mb-5">
           <p style="margin-right: 250px;"><b>Approved by:</b></p>
-          <b><u>ARIEL O. GUPIT</u></b>
+          <b><u>{{$brgyCaptain->fname}} {{$brgyCaptain->mname}} {{$brgyCaptain->lname}}</u></b>
           <p>Punong Barangay</p>
         </div>
 
         <div class="col-12 text-center">
-          <p style="font-size:15pt; line-height: 40px;">Paid under O.R No. ______________________ issued on ___________________2021. At Barangay Imelda (Aquino), Bulan Sorsogon.</p>
+          <p style="font-size:15pt; line-height: 40px;">Paid under O.R No. <u>{{$d2->or_number}}</u> issued on <u>{{Carbon\Carbon::parse($d2->date_issue)->format('F j,')}}</u> 2021. At Barangay Imelda (Aquino), Bulan Sorsogon.</p>
         </div>
 
       </div>
       <!-- /.col -->
+      @endforeach
+      @endforeach
     </div>
     <!-- /.row -->
 

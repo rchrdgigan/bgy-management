@@ -1,48 +1,51 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
+<form action="{{route('update.info')}}" method="POST" enctype="multipart/form-data">  
+@csrf
 <div class="row">
           <!-- Left col -->
           <section class="col-lg-8 connectedSortable ui-sortable">
             <div class="card card-info card-outline">
-              <div class="card-header">
-                <h3 class="card-title"><i class="fas fa-cogs"></i> Setting</h3>
-              </div>
+              
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fas fa-cogs"></i> Setting</h3>
+                </div>
+                <div class="card-body">
+                  <lable>Barangay :</label>
+                  <div class="input-group mb-3">
+                    <input type="text" name="bname" class="inp form-control" value="{{$data->barangay}}" placeholder="Input Barangay" required>
+                  </div>
+                  
+                  <lable>Municipality :</label>
+                  <div class="input-group mb-3">
+                    <input type="text" name="municipality" class="inp form-control" value="{{$data->municipality}}" placeholder="Input Municipality" required>
+                  </div>
 
-              <div class="card-body">
-                <lable>Barangay :</label>
-                <div class="input-group mb-3">
-                  <input type="text" class="inp form-control" placeholder="Input Barangay">
-                </div>
-                
-                <lable>Municipality :</label>
-                <div class="input-group mb-3">
-                  <input type="text" class="inp form-control" placeholder="Input Municipality">
-                </div>
+                  <lable>Province :</label>
+                  <div class="input-group mb-3">
+                    <input type="text" name="provice" class="inp form-control" value="{{$data->province}}" placeholder="Input Province" required>
+                  </div>
 
-                <lable>Province :</label>
-                <div class="input-group mb-3">
-                  <input type="text" class="inp form-control" placeholder="Input Province">
-                </div>
+                  <lable>Contact Number :</label>
+                  <div class="input-group mb-3">
+                    <input type="text" name="cpnumber" class="inp form-control" value="{{$data->contact}}" placeholder="Input Contact Number" required>
+                  </div>
 
-                <lable>Contact Number :</label>
-                <div class="input-group mb-3">
-                  <input type="text" class="inp form-control" placeholder="Input Contact Number">
+                  <lable for="email">Email Address :</label>
+                  <div class="input-group mb-3">
+                    <input id="email" name="email" type="email" class="inp form-control" value="{{$data->email}}" placeholder="Input Email Address" required>
+                  </div>
+                  <div class="row">
+                      <div class="col-3">
+                          <button type="submit" class="btn btn-primary btn-block">
+                              Save
+                          </button>
+                      </div>
+                  </div>
                 </div>
-
-                <lable for="email">Email Address :</label>
-                <div class="input-group mb-3">
-                  <input id="email" type="email" class="inp form-control" placeholder="Input Email Address">
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Save
-                        </button>
-                    </div>
-                </div>
-              </div>
-              <!-- /.card-body -->
+                <!-- /.card-body -->
+              
             </div>
           </section>
           <!-- /.Left col -->
@@ -51,43 +54,61 @@
           <section class="col-lg-4 connectedSortable ui-sortable">
             <div class="card card-primary card-outline">
               <div class="card-header mx-auto">
-                <img src="{{ asset('images/brgy.jpg')}}" height="150" class=" brand-image img-circle elevation-3" style="opacity: .8">
+                <div class="card-body box-profile">
+                  <div class="profile-pic">
+                      <div class="text-center mb-2">
+                          <img class="brand-image img-circle elevation-3" height="150" width="150" src="/storage/bgry_logo/{{$data->logo}}"  id="output">
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleInputFile">Upload Photo</label>
+                          <div class="input-group">
+                              <div class="custom-file">
+                                  <input id="file" type="file" name="image" class="custom-file-input" onchange="loadFile(event)"/>
+                                  <label class="custom-file-label" for="file">Choose file</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
-                <div class="form-group row">
+                <div class="form-group m-0 row">
                     <label for="email" class="col-md-4 col-form-label text-md-left">Barangay</label> 
                     <div class="col-md-6">
-                        <p class="form-control border-0">Barangay Name</p>
+                        <p class="form-control border-0">{{$data->barangay}}</p>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group m-0 row">
                     <label for="email" class="col-md-4 col-form-label text-md-left">Municipality</label> 
                     <div class="col-md-6">
-                        <p class="form-control border-0">Barangay Name</p>
+                        <p class="form-control border-0">{{$data->municipality}}</p>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group m-0 row">
                     <label for="email" class="col-md-4 col-form-label text-md-left">Province</label> 
                     <div class="col-md-6">
-                        <p class="form-control border-0">Bulan Sorsogon</p>
+                        <p class="form-control border-0">{{$data->province}}</p>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group m-0 row">
                     <label for="email" class="col-md-4 col-form-label text-md-left">Contact Number</label> 
                     <div class="col-md-6">
-                        <p class="form-control border-0">0920412312</p>
+                        <p class="form-control border-0">{{$data->contact}}</p>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group m-0 row">
                     <label for="email" class="col-md-4 col-form-label text-md-left">Email Address</label> 
                     <div class="col-md-6">
-                        <p class="form-control border-0">Email</p>
+                        <p class="form-control border-0">{{$data->email}}</p>
                     </div>
                 </div>
               </div>
             </div>
           </section>
           <!-- right col -->
-        </div>
+
+</div>
+</form>
+
 </div>
 @endsection

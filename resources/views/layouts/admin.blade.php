@@ -403,16 +403,35 @@
 </script>
 
 <script>
+  var x = document.getElementById('civil_status');
+  if(x.value === "Married"){
+    document.getElementById('married_to').style.display = "block"
+  }else{
+    document.getElementById('married_to').style.display = "none"
+  }
+
   var x = document.getElementById("birthdate").value;
 
-  const d = new Date().getFullYear();
+  const d = new Date();
   const y = new Date(x);
   var result;
-  let year = d;
+  let year = d.getFullYear();
   let year_input = y.getFullYear();
 
   result = year - year_input;
   document.getElementById("ageID").value = result;
+</script>
+
+<script>
+  function ifMarried()
+  {
+    var x = document.getElementById('civil_status');
+    if(x.value === "Married"){
+      document.getElementById('married_to').style.display = "block"
+    }else{
+      document.getElementById('married_to').style.display = "none"
+    }
+  }
 </script>
 
 </body>

@@ -89,20 +89,20 @@
 
                         <label for="civil_status">Civil Status :</label>
                         <div class="input-group mb-3">
-                        <select name="civil_status" id="civil_status" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
+                        <select name="civil_status" id="civil_status" onchange="ifMarried()" class="inp form-control" style="width: 100%;" aria-hidden="true" required="">
                             <option {{($resident->civil_status == 'Single')? 'selected' : ''}} value="Single">Single</option>
                             <option {{($resident->civil_status == 'Married')? 'selected' : ''}} value="Married">Married</option>
                             <option {{($resident->civil_status == 'Widowed')? 'selected' : ''}} value="Widowed">Widowed</option>
                         </select>
                         </div>
-
-                        <label for="married">Married to (Optional) :</label>
-                        <div class="input-group mb-3">
-                        <input type="text" id="married" name="married" 
-                                class="inp form-control" 
-                                placeholder="Input wife/husband name">
+                        <div id="married_to">
+                            <label for="married">Married to (Optional) :</label>
+                            <div class="input-group mb-3">
+                            <input type="text" id="married" value="{{$resident->married_to}}" name="married_to" 
+                                    class="inp form-control" 
+                                    placeholder="Input wife/husband name">
+                            </div>
                         </div>
-
                         <label for="age">Age :</label>
                         <div class="input-group mb-3">
                         <input type="number" id="age" readonly name="age" 

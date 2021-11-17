@@ -1,4 +1,8 @@
 <?php
+use App\Models\Official;
+use App\Models\Resident;
+use App\Models\IssueCertificate;
+use App\Models\Record;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
@@ -7,8 +11,10 @@ use App\Http\Controllers\{
     OfficialController,
     IssueCertificateController,
     CaseRecordController,
-    NotificationController
+    NotificationController,
+    PageController
 };
+
     
 Auth::routes();
 
@@ -16,19 +22,20 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return view('home');
+        $officials = Official::get();
+        $record = Record::count();
+        $issue_all = IssueCertificate::count();
+        $count_resident = Resident::count();
+        $count_official = $officials->count();
+
+        return view('home',compact('officials','count_official','count_resident','issue_all','record'));
     });
     Route::prefix('admin')->group(function(){
-        Route::get('brgy/info', function () {
-            return view('brgy-info');
-        })->name('brgy.info');
-
-        Route::get('show/registration/residents', function () {
-            return view('add-residents');
-        })->name('show.registration.residents');
-        
+        Route::get('brgy/info', [PageController::class, 'showInfo'])->name('brgy.info');
+        Route::post('update/brgy/info', [PageController::class, 'updateInfo'])->name('update.info');
 
         //route crud for residents
+        Route::get('show/registration/residents',function(){return view('add-residents');})->name('show.registration.residents');
         Route::post('add/resident', [ResidentController::class, 'store'])->name('add.residents');
         Route::delete('delete/resident', [ResidentController::class, 'destroy'])->name('delete.resident');
         Route::get('list/residents', [ResidentController::class, 'index'])->name('list.residents');
@@ -50,8 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         //print certificate
         Route::get('print/clearance/certificate/{id}', [IssueCertificateController::class, 'printClearance'])->name('print.clearance');
-        Route::get('print/business/certificate', [IssueCertificateController::class, 'printBusiness'])->name('print.business');
-        Route::get('print/indigency/certificate', [IssueCertificateController::class, 'printIndigency'])->name('print.indigency');
+        Route::get('print/business/certificate/{id}', [IssueCertificateController::class, 'printBusiness'])->name('print.business');
+        Route::get('print/indigency/certificate/{id}', [IssueCertificateController::class, 'printIndigency'])->name('print.indigency');
 
         //case record
         Route::get('list/case/records', [CaseRecordController::class, 'index'])->name('list.records');

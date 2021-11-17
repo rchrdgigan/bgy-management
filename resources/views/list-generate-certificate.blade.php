@@ -35,6 +35,7 @@
                                 <th>Date Issued</th>
                                 <th>Date Expired</th>
                                 <th>OR Number</th>
+                                <th>Community Tax No.</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -51,14 +52,26 @@
                                     <td><?php echo nl2br(html_entity_decode($d1->purpose))?></td>
                                     <td>{{$d1->date_issue}}</td>
                                     <td>{{$d1->date_expire}}</td>
-                                    <td>{{$d1->or_number}}</td>
+
+                                    @if($d1->or_number == '')
+                                        <th>N/A</th>
+                                    @else
+                                        <td>{{$d1->or_number}}</td>
+                                    @endif
+
+                                    @if($d1->cedula == '')
+                                        <th>N/A</th>
+                                        @else
+                                        <td>{{$d1->cedula}}</td>
+                                    @endif
+
                                     <td>
                                         @if($d1->generated_type == 'Clearance')
                                         <a href="{{route('print.clearance',$d1->id)}}"><i class="fas fa-print"></i> Print</a>
                                         @elseif($d1->generated_type == 'Business Permit')
-                                        <a href="{{route('print.business')}}"><i class="fas fa-print"></i> Print</a>
+                                        <a href="{{route('print.business',$d1->id)}}"><i class="fas fa-print"></i> Print</a>
                                         @elseif($d1->generated_type == 'Indigency')
-                                        <a href="{{route('print.indigency')}}"><i class="fas fa-print"></i> Print</a>
+                                        <a href="{{route('print.indigency',$d1->id)}}"><i class="fas fa-print"></i> Print</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -85,6 +98,7 @@
                                 <th>Date Issued</th>
                                 <th>Date Expired</th>
                                 <th>OR Number</th>
+                                <th>Community Tax No.</th>
                                 <th>Tools</th>
                             </tr>
                             </thead>
@@ -101,7 +115,17 @@
                                 <td><?php echo nl2br(html_entity_decode($d2->purpose))?></td>
                                 <td>{{$d2->date_issue}}</td>
                                 <td>{{$d2->date_expire}}</td>
-                                <td>{{$d2->or_number}}</td>
+                                @if($d1->or_number == '')
+                                    <th>N/A</th>
+                                @else
+                                    <td>{{$d1->or_number}}</td>
+                                @endif
+
+                                @if($d1->cedula == '')
+                                    <th>N/A</th>
+                                @else
+                                    <td>{{$d1->cedula}}</td>
+                                @endif
                                 <td>
                                     <a href="{{route('print.clearance',$d2->id)}}"><i class="fas fa-print"></i> Print</a>
                                 </td>
@@ -128,6 +152,7 @@
                                 <th>Date Issued</th>
                                 <th>Date Expired</th>
                                 <th>OR Number</th>
+                                <th>Community Tax No.</th>
                                 <th>Tools</th>
                             </tr>
                             </thead>
@@ -144,9 +169,21 @@
                                 <td><?php echo nl2br(html_entity_decode($d3->purpose))?></td>
                                 <td>{{$d3->date_issue}}</td>
                                 <td>{{$d3->date_expire}}</td>
-                                <td>{{$d3->or_number}}</td>
+                                
+                                @if($d1->or_number == '')
+                                    <th>N/A</th>
+                                @else
+                                    <td>{{$d1->or_number}}</td>
+                                @endif
+
+                                @if($d1->cedula == '')
+                                    <th>N/A</th>
+                                @else
+                                    <td>{{$d1->cedula}}</td>
+                                @endif
+
                                 <td>
-                                    <a href="{{route('print.business')}}"><i class="fas fa-print"></i> Print</a>
+                                    <a href="{{route('print.business',$d3->id)}}"><i class="fas fa-print"></i> Print</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -187,7 +224,7 @@
                                 <td>{{$d4->date_issue}}</td>
                                 <td>{{$d4->date_expire}}</td>
                                 <td>
-                                    <a href="{{route('print.indigency')}}"><i class="fas fa-print"></i> Print</a>
+                                    <a href="{{route('print.indigency',$d4->id)}}"><i class="fas fa-print"></i> Print</a>
                                 </td>
                             </tr>
                             @endforeach

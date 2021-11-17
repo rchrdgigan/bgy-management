@@ -28,6 +28,7 @@ class CreateResidentsTable extends Migration
             $table->string('email');
             $table->string('street');
             $table->string('purok');
+            $table->string('married_to')->nullable();
             $table->string('citizenship');
             $table->string('ddperson');
             $table->string('religion');

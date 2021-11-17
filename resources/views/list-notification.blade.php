@@ -47,9 +47,24 @@
                             <tbody>
                             <tr>
                                 <td hidden="">No.</td>
-                                <td>Flood</td>
+                                <td>Flood Alert</td>
                                 <td>Sept 20, 2021</td>
                                 <td>All</td>
+                                <td>
+                                <a class="btn btn-danger m-1 .btn-sm"
+                                    type="button" 
+                                    class="btn btn-primary" 
+                                    data-toggle="modal" 
+                                    data-target="#delCaseModal">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td hidden="">No.</td>
+                                <td>Fire Alert</td>
+                                <td>August 23, 2021</td>
+                                <td>5</td>
                                 <td>
                                 <a class="btn btn-danger m-1 .btn-sm"
                                     type="button" 

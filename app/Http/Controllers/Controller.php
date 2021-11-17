@@ -20,6 +20,9 @@ class Controller extends BaseController
             if(session('delete_message')) {
                 Alert::info('Delete!', session('delete_message'));
             }
+            if(session('warning_message')) {
+                Alert::warning('No Data Found!', session('warning_message'));
+            }
             return $next($request);
         });
     }
