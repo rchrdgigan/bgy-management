@@ -23,7 +23,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <table id="food_item" class="table table-bordered table-striped">
+            <table id="all_data" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th hidden="">No.</th>
