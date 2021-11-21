@@ -43,13 +43,13 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{auth()->user()->name}} <span class="caret"></span>
+          <i class="fas fa-user-circle fa-lg"></i> {{auth()->user()->name}} <span class="caret"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
+                  <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -86,44 +86,44 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-          <a href="{{route('home')}}" class="nav-link">
+          <a href="{{route('home')}}" class="{{(request()->route()->getName()=='home')?'active':''}} nav-link">
             <i class="nav-icon fas fa-chart-line"></i>
             <p>Dashboard</p></a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="{{(request()->route()->getName()=='brgy.official' | request()->route()->getName()=='brgy.manage-offcials')?'active':''}} nav-link">
               <i class="nav-icon far fa-clipboard"></i>
               <p>Baranagay Officials</p>
               <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{route('brgy.official')}}" class="nav-link">
+                <a href="{{route('brgy.official')}}" class="{{(request()->route()->getName()=='brgy.official')?'active':''}} nav-link">
                 <i class="nav-icon fas fa-user-friends ml-3"></i>
                 <p>List of Officials</p></a>
               </li>
               <li class="nav-item">
-                <a href="{{route('brgy.manage-offcials')}}" class="nav-link">
+                <a href="{{route('brgy.manage-offcials')}}" class="{{(request()->route()->getName()=='brgy.manage-offcials')?'active':''}} nav-link">
                 <i class="nav-icon fas fa-users-cog ml-3"></i>
                 <p>Manage Officials</p></a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="{{(request()->route()->getName()=='show.registration.residents' | request()->route()->getName()=='list.residents')?'active':''}} nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Residents</p>
             <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{route('show.registration.residents')}}" class="nav-link">
+                <a href="{{route('show.registration.residents')}}" class="{{(request()->route()->getName()=='show.registration.residents')?'active':''}} nav-link">
                   <i class="nav-icon fas fa-user ml-3"></i>
                   <p>Add New Resident</p></a>
               </li>
               <li class="nav-item">
-                <a href="{{route('list.residents')}}" class="nav-link">
+                <a href="{{route('list.residents')}}" class="{{(request()->route()->getName()=='list.residents')?'active':''}} nav-link">
                   <i class="nav-icon fas fa-user-friends ml-3"></i>
                   <p>List of Residents</p></a>
               </li>
@@ -131,19 +131,19 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="{{(request()->route()->getName()=='issue.certificate' | request()->route()->getName()=='gen.certificate')?'active':''}} nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>Certification</p>
             <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{route('issue.certificate')}}" class="nav-link">
+                <a href="{{route('issue.certificate')}}" class="{{(request()->route()->getName()=='issue.certificate')?'active':''}} nav-link">
                   <i class="nav-icon fas fa-user ml-3"></i>
                   <p>Issue Certificate</p></a>
               </li>
               <li class="nav-item">
-                <a href="{{route('gen.certificate')}}" class="nav-link">
+                <a href="{{route('gen.certificate')}}" class="{{(request()->route()->getName()=='gen.certificate')?'active':''}} nav-link">
                 <i class="nav-icon fas fa-file-alt ml-3"></i>
                   <p>List of Generated</p></a>
               </li>
@@ -151,14 +151,14 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="{{(request()->route()->getName()=='list.records')?'active':''}} nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>Blotter Record</p>
             <i class="nav-icon fas fa-angle-left right"></i>
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{route('list.records')}}" class="nav-link">
+                <a href="{{route('list.records')}}" class="{{(request()->route()->getName()=='list.records')?'active':''}} nav-link">
                   <i class="nav-icon fas fa-user-slash ml-3"></i>
                   <p>List of Records</p></a>
               </li>
@@ -166,14 +166,14 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{route('list.notif')}}" class="nav-link">
+            <a href="{{route('list.notif')}}" class="{{(request()->route()->getName()=='list.notif')?'active':''}} nav-link">
               <i class="nav-icon fas fa-envelope-open-text"></i>
               <p>SMS Notification</p>
             </a>
           </li>
 
           <li class="nav-item">
-          <a href="{{route('brgy.info')}}" class="nav-link">
+          <a href="{{route('brgy.info')}}" class="{{(request()->route()->getName()=='brgy.info')?'active':''}} nav-link">
             <i class="nav-icon fas fa-info"></i>
             <p>Baranagay Info</p></a>
           </li>

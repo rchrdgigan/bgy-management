@@ -89,7 +89,7 @@
                             <div class="card-tools">
                                 <button type="button"
                                         data-toggle="modal" 
-                                        data-target="#addNewModal"
+                                        data-target="#addMeetingModal"
                                         class="btn btn-warning">
                                     <i class="fas fa-plus"></i>
                                     Create Notification
@@ -155,6 +155,42 @@
                    
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addMeetingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bell"></i>Create Metting Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <form action="" method="post" id="business_frm">
+                    <div class="form-group">
+                        <label for="meeting">Meeting Type</label>
+                        <input type="text" name="meeting" class="form-control" id="meeting" placeholder="Enter Meeting Type" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Officials Position</label>
+                        <div class="select2-purple">
+                            <select class="select2" multiple="multiple" name="position[]" data-placeholder="Select Officials Position" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
+                            
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea type="text" name="message" class="form-control" id="message" maxlength="250" placeholder="Enter message" style="height:200px"></textarea>
+                    </div>
+                    <a data-dismiss="modal" aria-label="Close" class="btn btn-info"><i class="fas fa-backspace"></i> Close</a>
+                    <button type="submit" class="btn btn-info float-right"><i class="fas fa-paper-plane"></i> Send</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
