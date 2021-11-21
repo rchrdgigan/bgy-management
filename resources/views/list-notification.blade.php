@@ -45,36 +45,25 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($disaster as $data)
                             <tr>
-                                <td hidden="">No.</td>
-                                <td>Flood Alert</td>
-                                <td>Sept 20, 2021</td>
-                                <td>All</td>
+                                <td hidden="">{{$data->id}}</td>
+                                <td>{{$data->type}}</td>
+                                <td>{{Carbon\Carbon::parse($data->created_at)->format('M d, Y')}}</td>
+                                <td>{{$data->purok_street}}</td>
                                 <td>
-                                <a class="btn btn-danger m-1 .btn-sm"
-                                    type="button" 
-                                    class="btn btn-primary" 
-                                    data-toggle="modal" 
-                                    data-target="#delCaseModal">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <form action="{{route('del.notif',$data->id)}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger m-1 .btn-sm"
+                                        type="submit" 
+                                        class="btn btn-primary">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td hidden="">No.</td>
-                                <td>Fire Alert</td>
-                                <td>August 23, 2021</td>
-                                <td>5</td>
-                                <td>
-                                <a class="btn btn-danger m-1 .btn-sm"
-                                    type="button" 
-                                    class="btn btn-primary" 
-                                    data-toggle="modal" 
-                                    data-target="#delCaseModal">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                </td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         </div>
@@ -137,24 +126,75 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" method="post" id="business_frm">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-6 text-center">
-                            <a class="btn btn-danger p-5 col-12" href="{{route('fire.form')}}"><i class="fas fa-dumpster-fire text-white" style="font-size:200px;"></i><br><b>Fire Notifier</b></a>
-                        </div> 
-                        
-                        <div class="col-6 text-center">
-                        <form action="" method="POST">
-                            <input type="text" name="notification_type" value="All" hidden>
-                            <input type="text"name="message" value="FLOOD ALERT: Ang baha ay posibleng pang tumaas kaya magsilikas na ang mga nasa mabababang lugar na binabaha." hidden>
+            <div class="modal-body">
+                <?php 
+
+                    function itexmo($number,$message,$apicode,$passwd){
+                        $ch = curl_init();
+                        $itexmo = array('1' => $number, '2' => $message, '3' => $apicode, 'passwd' => $passwd);
+                        curl_setopt($ch, CURLOPT_URL,"https://www.itexmo.com/php_api/api.php");
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query($itexmo));
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        return curl_exec ($ch);
+                        curl_close ($ch);
+                    }
+
+                    if($_POST)
+                    {
+                        foreach($resident as $data2)
+                        {
+                            $name = $_POST['name'];
+                            $msg = $_POST['msg'];
+                            $number = $data2->cnumber;
+                            $api = "TR-RICHA827042_F42CS";
+                            $api_pass = "wp!5676#q$";
+    
+                            $text = $name." : ".$msg;
+                            if(!empty($_POST['name']) && ($_POST['msg']))
+                            {               
+                                $result = itexmo($number,$msg,$api,$api_pass);
+                                if ($result == ""){
+                                    echo "iTexMo: No response from server!!!
+                                    Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
+                                    Please CONTACT US for help. ";	
+                                }else if ($result == 0){
+                                    echo "<div class='alert alert-success alert-dismissible'>
+                                            Flood Notification Alert Sent!
+                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                                <span aria-hidden='true'>&times;</span>
+                                            </button>
+                                        </div>";
+                                }
+                                else{	
+                                    echo "<div class='alert alert-danger alert-dismissible'>
+                                            Error Num ". $result . " was encountered!
+                                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                                <span aria-hidden='true'>&times;</span>
+                                            </button>
+                                        </div>";
+                                }
+                            }
+                        }
+                    }
+                ?>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <a class="btn btn-danger p-5 col-12" href="{{route('fire.form')}}"><i class="fas fa-dumpster-fire text-white" style="font-size:200px;"></i><br><b>Fire Notifier</b></a>
+                    </div> 
+                    
+                    <div class="col-6 text-center">
+                        <form action="{{route('flood.notif')}}" method="POST">
+                            @csrf
+                            <input type="text" name="name" value="Brgy. Secretary" hidden>
+                            <input type="text" name="msg" value="BRGY. ALERT: Ang baha ay posibleng pang tumaas kaya magsilikas na ang mga nasa mabababang lugar." hidden>
                             <button type="submit" class="btn btn-primary p-5 col-12"><i class="fas fa-cloud-rain text-white" style="font-size:200px;"></i><br><b>Flood Notifier</b></button>
                         </form>
-                        </div>
                     </div>
-                   
                 </div>
-            </form>
+                
+            </div>
         </div>
     </div>
 </div>

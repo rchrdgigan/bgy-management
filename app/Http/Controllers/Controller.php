@@ -23,6 +23,9 @@ class Controller extends BaseController
             if(session('warning_message')) {
                 Alert::warning('No Data Found!', session('warning_message'));
             }
+            if(session('sent_message')) {
+                Alert::success('Message Sent!', session('sent_message'));
+            }
             return $next($request);
         });
     }

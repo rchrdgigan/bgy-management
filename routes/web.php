@@ -70,8 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         //sms notification
         Route::get('list/notif/records', [NotificationController::class, 'index'])->name('list.notif');
+        Route::delete('list/notif/records/{id}', [NotificationController::class, 'destroy'])->name('del.notif');
         Route::get('fire/notif/form', [NotificationController::class, 'fireForm'])->name('fire.form');
-
+        Route::post('flood/notif', [NotificationController::class, 'floodNotif'])->name('flood.notif');
 
     });
 });
