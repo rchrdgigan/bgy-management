@@ -22,10 +22,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <em>Barangay Benigno S. Aquino Bulan Sorsogon</em> 
   &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
 
-  <em>Punong Brgy. Catain Marvells</em>
-  &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+  <em>VISION</em>
+  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp;
 
-  <em>Kalihim ng Brgy. Sandy Santiago</em>
+  <em>Isang maunlad na barangay na kung saan matatagpuan ang paliparan ng bulan, na may malinis at malasakit sa
+  kapaligiran matatag na ekonomiya, mapayapa, makadiyos , at disiplinadong mamamayan, na pinamumunuan ng mga
+  tapat na barangay opisyal.</em>
+  &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <em>MISSION</em>
+  &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <em>Maiangat ang antas ng pamumuhay sa pamamagitan ng pagsasanay ng kapasidad sa buong barangay na maging
+  responsable sa kanilang pamilya at kapaligiran.</em>
   &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
 
 </marquee>

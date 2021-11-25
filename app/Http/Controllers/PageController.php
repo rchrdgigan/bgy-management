@@ -12,7 +12,8 @@ class PageController extends Controller
     public function showInfo()
     {
         $data = BarangayInfo::first();
-        return view('brgy-info',compact('data'));
+        return view('brgy-info',compact('data'),['metaTitle'=>'Barangay Information | Admin Panel',
+        'metaHeader'=>'Barangay Information']);
     }
 
     public function updateInfo(Request $request)

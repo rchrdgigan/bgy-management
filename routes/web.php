@@ -28,14 +28,16 @@ Route::group(['middleware' => 'auth'], function () {
         $count_resident = Resident::count();
         $count_official = $officials->count();
 
-        return view('home',compact('officials','count_official','count_resident','issue_all','record'));
+        return view('home',compact('officials','count_official','count_resident','issue_all','record'),['metaTitle'=>'Admin Dashboard',
+        'metaHeader'=>'Dashboard']);
     });
     Route::prefix('admin')->group(function(){
         Route::get('brgy/info', [PageController::class, 'showInfo'])->name('brgy.info');
         Route::post('update/brgy/info', [PageController::class, 'updateInfo'])->name('update.info');
 
         //route crud for residents
-        Route::get('show/registration/residents',function(){return view('add-residents');})->name('show.registration.residents');
+        Route::get('show/registration/residents',function(){return view('add-residents',['metaTitle'=>'Baranagay Residents | Admin Panel',
+            'metaHeader'=>'Residents']);})->name('show.registration.residents');
         Route::post('add/resident', [ResidentController::class, 'store'])->name('add.residents');
         Route::delete('delete/resident', [ResidentController::class, 'destroy'])->name('delete.resident');
         Route::get('list/residents', [ResidentController::class, 'index'])->name('list.residents');
@@ -72,7 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('list/notif/records', [NotificationController::class, 'index'])->name('list.notif');
         Route::delete('list/notif/records/{id}', [NotificationController::class, 'destroy'])->name('del.notif');
         Route::get('fire/notif/form', [NotificationController::class, 'fireForm'])->name('fire.form');
+        Route::post('fire/notif', [NotificationController::class, 'fireNotif'])->name('fire.notif');
         Route::post('flood/notif', [NotificationController::class, 'floodNotif'])->name('flood.notif');
-
+        Route::post('official/notif', [NotificationController::class, 'officialNotif'])->name('official.notif');
+        Route::delete('list/notif/meeting/{id}', [NotificationController::class, 'destroyMeeting'])->name('del.meeting');
     });
 });

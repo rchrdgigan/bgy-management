@@ -16,7 +16,8 @@ class ResidentController extends Controller
     public function index()
     {
         $resident = Resident::get();
-        return view('list-residents',compact('resident'));
+        return view('list-residents',compact('resident'),['metaTitle'=>'Baranagay Residents | Admin Panel',
+        'metaHeader'=>'Residents']);
     }
 
     /**
@@ -101,7 +102,8 @@ class ResidentController extends Controller
                 $itemRecord->date_time_incident = $item_record->date_time_incident;
             });
         });
-        return view('resident-profile',compact('resident','case'));
+        return view('resident-profile',compact('resident','case'),['metaTitle'=>'Baranagay Residents | Admin Panel',
+        'metaHeader'=>'Resident Information']);
     }
 
     /**
@@ -115,7 +117,8 @@ class ResidentController extends Controller
          //Show Profile to Edit
          $resident = Resident::findOrFail($id);
          $resident->first();
-         return view('edit-residents',compact('resident'));
+         return view('edit-residents',compact('resident'),['metaTitle'=>'Baranagay Residents | Admin Panel',
+         'metaHeader'=>'Edit Resident']);
     }
 
     /**

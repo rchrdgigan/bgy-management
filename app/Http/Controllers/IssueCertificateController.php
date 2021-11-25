@@ -15,7 +15,8 @@ class IssueCertificateController extends Controller
     public function index()
     {
         $resident = Resident::get();
-        return view('list-issue-certificate', compact('resident'));
+        return view('list-issue-certificate', compact('resident'),['metaTitle'=>'Barangay Certification | Admin Panel',
+        'metaHeader'=>'Certification']);
     }
 
     public function listGenCertificate()
@@ -76,7 +77,8 @@ class IssueCertificateController extends Controller
                 $listIssue->bplace = $item_resident_issue->bplace;
             });
         });
-        return view('list-generate-certificate', compact('issue_all','issue_clearance','issue_business','issue_indigency'));
+        return view('list-generate-certificate', compact('issue_all','issue_clearance','issue_business','issue_indigency'),['metaTitle'=>'Barangay Certification | Admin Panel',
+        'metaHeader'=>'Certification']);
     }
 
     public function store(Request $request)

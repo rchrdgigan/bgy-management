@@ -24,6 +24,24 @@
                         </div>
 
                         <div class="input-group mb-3">
+                            <select name="position" id="occupation" class="form-control" aria-hidden="true" required="">
+                                <option value="Brgy. Secretary">Brgy. Secretary</option>
+                                <option value="Punong Barangay">Punong Barangay</option>
+                            </select>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                            @error('position')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                            
+
+                        <div class="input-group mb-3">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -62,7 +80,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
                                 <label for="agreeTerms">
                                 I agree to the <a href="#">terms</a>
                                 </label>

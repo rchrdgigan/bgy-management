@@ -527,7 +527,7 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <button type="submit" class="btn btn-warning btn-block">
-                                            Submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

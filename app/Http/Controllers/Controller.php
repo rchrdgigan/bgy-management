@@ -26,6 +26,9 @@ class Controller extends BaseController
             if(session('sent_message')) {
                 Alert::success('Message Sent!', session('sent_message'));
             }
+            if(session('not_sent')) {
+                Alert::error('Message Not Sent!', session('not_sent'));
+            }
             return $next($request);
         });
     }

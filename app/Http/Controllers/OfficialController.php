@@ -11,7 +11,8 @@ class OfficialController extends Controller
     public function index()
     {
         $officials = Official::get();
-        return view('brgy-manage-officials', compact('officials'));
+        return view('brgy-manage-officials', compact('officials'),['metaTitle'=>'Baranagay Officials | Admin Panel',
+        'metaHeader'=>'Baranagay Officials']);
     }
 
     public function store(Request $request)
@@ -111,7 +112,8 @@ class OfficialController extends Controller
     {
         $dateNow = Carbon::now();
         $official = Official::where("to", ">=", $dateNow->toDateString())->get();
-        return view('brgy-official', compact('official'));
+        return view('brgy-official', compact('official'),['metaTitle'=>'Baranagay Officials | Admin Panel',
+        'metaHeader'=>'Baranagay Officials']);
     }
 
 }

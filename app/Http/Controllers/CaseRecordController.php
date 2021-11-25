@@ -22,7 +22,8 @@ class CaseRecordController extends Controller
         });
 
         $resident = Resident::get();
-        return view('manage-blotter',compact('resident','record'));
+        return view('manage-blotter',compact('resident','record'),['metaTitle'=>'Blotter Records | Admin Panel',
+        'metaHeader'=>'Blotter Record']);
     }
 
     public function store(Request $request)
@@ -65,7 +66,8 @@ class CaseRecordController extends Controller
                 $listRecord->lname = $item_respondent_name->lname;
             });
         });
-        return view('show-residents-record',compact('record'));
+        return view('show-residents-record',compact('record'),['metaTitle'=>'Blotter Records | Admin Panel',
+        'metaHeader'=>'Resident Blotter Record']);
     }
 
     public function edit($id)
@@ -81,7 +83,8 @@ class CaseRecordController extends Controller
             });
         });
         $resident = Resident::get();
-        return view('edit-resident-record',compact('resident','record'));
+        return view('edit-resident-record',compact('resident','record'),['metaTitle'=>'Blotter Records | Admin Panel',
+        'metaHeader'=>'Edit Resident Blotter Record']);
     }
 
     public function update(Request $request, $id)

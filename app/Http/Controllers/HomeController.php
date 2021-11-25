@@ -32,6 +32,7 @@ class HomeController extends Controller
         $count_resident = Resident::count();
         $count_official = $officials->count();
 
-        return view('home',compact('officials','count_official','count_resident','issue_all','record'));
+        return view('home',compact('officials','count_official','count_resident','issue_all','record'),['metaTitle'=>'Admin Dashboard',
+        'metaHeader'=>'Dashboard']);
     }
 }

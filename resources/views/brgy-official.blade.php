@@ -121,8 +121,8 @@
                                     citizenship="{{$member->citizenship}}"
                                     religion="{{$member->religion}}"
                                     position="{{$member->position}}"
-                                    from="{{Carbon\Carbon::parse($data->from)->format('Y')}}"
-                                    to="{{Carbon\Carbon::parse($data->to)->format('Y')}}"
+                                    from="{{Carbon\Carbon::parse($member->from)->format('Y')}}"
+                                    to="{{Carbon\Carbon::parse($member->to)->format('Y')}}"
                                     image="/storage/official_image/{{$member->image}}"
                                     data-toggle="modal" 
                                     data-target="#showOfficialModal">

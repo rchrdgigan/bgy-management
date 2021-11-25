@@ -78,7 +78,7 @@
         </div>
         <div class="info">
           <a href="" class="d-block">{{auth()->user()->name}}</a>
-          <span href="" class="d-block text-center">Secretary</span>
+          <span href="" class="d-block text-center">({{auth()->user()->position}})</span>
         </div>
       </div>
 
@@ -205,7 +205,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0">Dashboard</h3>
+            <h3 class="m-0">{{$metaHeader}}</h3>
           </div>
         </div>
       </div>
@@ -432,6 +432,15 @@
       document.getElementById('married_to').style.display = "none"
     }
   }
+</script>
+
+<script>
+  $('#viewMsg').on('show.bs.modal', function (e) {
+    var opener=e.relatedTarget;
+    var msg=$(opener).attr('msg');
+
+    $('#msg').find('[name="message"]').val(msg);
+  });
 </script>
 
 </body>
