@@ -38,8 +38,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
 
 </marquee>
-<body class="hold-transition login-page"  style="background-image: url({{ asset('images/bgframe.png')}}); background-repeat: no-repeat; background-attachment: fixed;
-  background-size: cover;">
+<!-- background:linear-gradient(to top, gray,#007bff);  style="background-image: url({{ asset('images/bgframe.png')}}); background-repeat: no-repeat; background-attachment: fixed;
+  background-size: cover;" -->
+<body class="hold-transition login-page" style="background:linear-gradient(to top, gray,white);">
 @yield('content')
 </body>
 </html>

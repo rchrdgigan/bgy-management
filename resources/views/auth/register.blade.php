@@ -4,7 +4,7 @@
 <div class="login-box">
     <div class="card card-primary">
         <div class="card-header">
-            <h4 class="text-center">{{ __('Sign-Up') }}</h4>
+            <h4 class="text-center"><i class="fas fa-user-plus"></i> {{ __('Sign-Up') }}</h4>
         </div>
             <div class="card-body login-card-body">
                     <form method="POST" action="{{ route('register') }}">

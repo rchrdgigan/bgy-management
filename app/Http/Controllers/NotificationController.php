@@ -40,8 +40,9 @@ class NotificationController extends Controller
             {
                 $msg = $_POST['msg'];
                 $number = $data2->cnumber;
-                $api = "TR-RICHA827042_F42CS";
-                $api_pass = "wp!5676#q$";
+                //Attach the API
+                $api = "TR-DRAHC845673_IPPCB";
+                $api_pass = "g8g)$!b8](";
 
                 if(!empty($_POST['msg']))
                 {               
@@ -101,8 +102,9 @@ class NotificationController extends Controller
             {
                 $msg = $_POST['msg'];
                 $number = $data2->cnumber;
-                $api = "TR-RICHA827042_F42CS";
-                $api_pass = "wp!5676#q$";
+                //Attach the API
+                $api = "TR-DRAHC845673_IPPCB";
+                $api_pass = "g8g)$!b8](";
 
                 if(!empty($_POST['msg']))
                 {               
@@ -148,8 +150,9 @@ class NotificationController extends Controller
             {
                 $msg = $_POST['msg'];
                 $number = $data2->cnumber;
-                $api = "TR-RICHA827042_F42CS";
-                $api_pass = "wp!5676#q$";
+                //Attach the API
+                $api = "TR-DRAHC845673_IPPCB";
+                $api_pass = "g8g)$!b8](";
 
                 if(!empty($_POST['msg']))
                 {               
